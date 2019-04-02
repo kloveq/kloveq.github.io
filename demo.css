@@ -48,13 +48,6 @@ a:hover {
    display: block;
    
 }
-#footer {
-	background: #e8e8e8;
-	padding: 1em;
-	border-top: 1px solid #333;
-	text-align: center;
-	color: #838383;
-}
 #content {
 	padding: 1em 8em;
 
@@ -71,4 +64,11 @@ a:hover {
 	width: 33.3333%;
 	padding-right: 3em;
 	text-align: justify;
+}
+#footer {
+	background: #e8e8e8;
+	padding: 1em;
+	border-top: 1px solid #333;
+	text-align: center;
+	color: #838383;
 }
