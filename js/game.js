@@ -53,9 +53,6 @@ class game {
             self.update();
             self.draw();
             setTimeout(self.loop, 33);
-            if(self.gameOver){
-                location.reload();
-            }
         };
         this.update = function() {
             this.bg.update();
