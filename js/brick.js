@@ -37,7 +37,7 @@ var brick = function (game) {
         this.x -= 2;
         if(this.x == -30){
             this.x = 288;
-            this.height1 = Math.random() * 200;
+            this.height1 = 80 + Math.random() * 140;
             this.height2 = 320 - this.height1;
         }
         this.y1 = 450 - this.height1;
