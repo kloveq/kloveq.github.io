@@ -45,6 +45,9 @@ class game {
 
         this.clickListener = function(){
             this.canvas.addEventListener('click', function(){
+                if(self.gameOver){
+                    location.reload();
+                }
                 self.bird.clickListener();
             })
         }
