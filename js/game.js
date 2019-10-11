@@ -37,6 +37,10 @@ class game {
             this.brick = new brick(this);
             this.brick.init();
 
+            // create message
+            this.message = new message(this);
+            this.message.init();
+
             // event listener
             this.clickListener();
 
@@ -49,6 +53,7 @@ class game {
                     location.reload();
                 }
                 self.bird.clickListener();
+                self.gameStatus = 0;
             })
         }
 
@@ -62,12 +67,14 @@ class game {
             this.base.update();
             this.bird.update();
             this.brick.update();
+            this.message.update();
         };
         this.draw = function() {
             this.bg.draw();
             this.base.draw();
             this.brick.draw();
             this.bird.draw();
+            this.message.draw();
         };
     }
 }
