@@ -6,8 +6,27 @@ var DIR_DOWN  = 2;
 var DIR_LEFT  = 4;
 var DIR_RIGHT = 8;
 
-var maxBomb = 1;
-var speed = 100;
+var maxBoom =1;
+var speed = 80;
+var size = 45;
+
+const map = [
+	[11, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 12],
+	[9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8],
+	[9, 0, 1, 2, 2, 0, 1, 0, 3, 0, 1, 2, 2, 0, 1, 0, 8],
+	[9, 0, 2, 2, 4, 2, 0, 3, 0, 3, 2, 2, 5, 2, 2, 0, 8],
+	[9, 2, 2, 4, 1, 4, 3, 0, 0, 0, 3, 5, 1, 5, 2, 2, 8],
+	[9, 2, 4, 4, 4, 4, 4, 2, 3, 2, 5, 5, 5, 5, 5, 2, 8],
+	[9, 2, 1, 4, 1, 4, 1, 2, 3, 2, 1, 5, 1, 5, 1, 2, 8],
+	[9, 2, 2, 4, 4, 4, 2, 0, 3, 0, 2, 5, 5, 5, 2, 2, 8],
+	[9, 0, 2, 2, 4, 4, 4, 2, 3, 2, 5, 5, 5, 5, 2, 0, 8],
+	[9, 0, 1, 2, 2, 4, 2, 0, 3, 0, 2, 5, 2, 2, 1, 0, 8],
+	[9, 0, 0, 0, 2, 2, 4, 2, 3, 2, 5, 2, 2, 0, 0, 0, 8],
+	[9, 0, 1, 0, 1, 2, 2, 2, 3, 2, 2, 2, 1, 0, 1, 0, 8],
+	[9, 0, 0, 0, 0, 0, 2, 2, 3, 2, 2, 0, 0, 0, 0, 0, 8],
+	[9, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 8],
+	[13, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 14]
+];
 
 var GameScene = new Phaser.Class({
 
@@ -28,25 +47,62 @@ var GameScene = new Phaser.Class({
     create: function ()
     {
 		// add sky
-		this.add.image(400, 300, 'sky');
-
-		// add player sprite
-		player = this.physics.add.sprite(400, 200, 'bomber').setScale(0.6);
-
-		player.setCollideWorldBounds(true);
-		player.setBounceY(0.1);
+		this.add.image(385, 300, 'ground').setScale(1.3);
 
 		scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#fff'});
 
 		// add platforms
 		platforms = this.physics.add.staticGroup();
 
-		platforms.create(400, 568, 'ground').setScale(2).refreshBody();
-		platforms.create(100, 200, 'ground');
-		platforms.create(620, 300, 'ground');
-		platforms.create(180, 400, 'ground');
+		map.forEach((row, rowIndex) => {
+			row.forEach((index, colIndex) => {
+				switch(index) {
+					case 1:
+						platforms.create((colIndex + 0.5) * size, (rowIndex + 0.5) * size, 'item_wood').setScale(0.5).refreshBody();
+						break;
+					case 2:
+						item = platforms.create((colIndex + 0.5) * size, (rowIndex + 0.5) * size, 'item_grass').setScale(0.9).refreshBody();
+						item.type = 2;
+						break;
+					case 3:
+						platforms.create((colIndex + 0.5) * size, (rowIndex + 0.5) * size, 'item_stone').setScale(0.9).refreshBody();
+						break;
+					case 6:
+						platforms.create((colIndex + 0.5) * size, (rowIndex + 0.5) * size, 'bottom_stone').setScale(0.9);
+						break;
+					case 7:
+						platforms.create((colIndex + 0.5) * size, (rowIndex + 0.5) * size, 'top_stone').setScale(0.9);
+						break;
+					case 8:
+						platforms.create((colIndex + 0.5) * size, (rowIndex + 0.5) * size, 'right_stone').setScale(0.9);
+						break;
+					case 9:
+						platforms.create((colIndex + 0.5) * size, (rowIndex + 0.5) * size, 'left_stone').setScale(0.9);
+						break;
+					case 11:
+						platforms.create((colIndex + 0.5) * size, (rowIndex + 0.5) * size, 'top_left').setScale(0.9);
+						break;
+					case 12:
+						platforms.create((colIndex + 0.5) * size, (rowIndex + 0.5) * size, 'top_right').setScale(0.9);
+						break;
+					case 13:
+						platforms.create((colIndex + 0.5) * size, (rowIndex + 0.5) * size, 'bottom_left').setScale(0.9);
+						break;
+					case 14:
+						platforms.create((colIndex + 0.5) * size, (rowIndex + 0.5) * size, 'bottom_right').setScale(0.9);
+						break;
+
+				}
+			});
+		});
 
 		
+		// add player sprite
+		player = this.physics.add.sprite(400, 200, 'bomber').setScale(0.6);
+
+		player.body.allowGravity = false;
+		player.setCollideWorldBounds(true);
+
 		// add bombs
 		bombs = this.physics.add.group();
 		booms = this.physics.add.group();
@@ -56,15 +112,7 @@ var GameScene = new Phaser.Class({
 		items = this.physics.add.group();
 
 		// add random coins and bombs
-		gameitems = this.physics.add.group({
-			key: 'star',
-			repeat: 11,
-			setXY: {
-				x: 12,
-				y: 0,
-				stepX: 70
-			}
-		});
+		gameitems = this.physics.add.group();
 
 		gameitems.children.iterate(function (child) {
 			child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.6));
@@ -118,7 +166,7 @@ var GameScene = new Phaser.Class({
 		//this.physics.add.overlap(player, bombs, this.bombsOverlap, null, this);
 		this.physics.add.overlap(gameitems, bombs, this.bombsOverlapItem, null, this);
 
-		this.physics.add.overlap(boomBangs, gameitems, this.boombangItem, null, this);
+		this.physics.add.overlap(boomBangs, platforms, this.boombangItem, null, this);
 
 		this.physics.add.overlap(player, items, this.getItems, null, this);
 		
@@ -148,7 +196,7 @@ var GameScene = new Phaser.Class({
 		});
 
 		// quit to menu button
-		this.btnquit = this.addButton(760, 40, 'sprites', this.doBack, this, 'btn_close_hl', 'btn_close', 'btn_close_hl', 'btn_close');
+		this.btnquit = this.addButton(720, 40, 'sprites', this.doBack, this, 'btn_close_hl', 'btn_close', 'btn_close_hl', 'btn_close');
     },
 
     update: function (time, delta)
@@ -167,45 +215,32 @@ var GameScene = new Phaser.Class({
 			player.setVelocityX(speed); 
 			player.anims.play('right');
 		}
-		else { 
-			player.setVelocityX(0); 
+		else if (cursors.up.isDown){ 
+			player.setVelocityY(-speed); 
 			player.anims.play('turn');
 		}
-
-		if (cursors.up.isDown && player.body.touching.down ||
-			cursors.left.isDown && cursors.up.isDown && player.body.touching.left ||
-			cursors.right.isDown && cursors.up.isDown && player.body.touching.right)
-		{ 
-			player.setVelocityY(-330); 
+		else if (cursors.down.isDown){ 
+			player.setVelocityY(speed); 
+			player.anims.play('turn');
+		}
+		else { 
+			player.setVelocity(0);
+			player.anims.play('turn');
 		}
 
 		if (cursors.space.isDown) {
 			this.putBoom();
 		}
 
-		if (cursors.down.isDown) {
-			this.fireBomb();
-		}
-
-		// bombs movement
-		bombs.children.entries.forEach(bomb => {
-			if(bomb.x <= 0 || bomb.x >= 800) {
-				bomb.speedX *= -1;
-			}
-			if(bomb.y <= 0 || bomb.y >= 600) {
-				bomb.speedY *= -1;
-			}
-		});
-
 		// booms check status
 		booms.children.entries.forEach(boom => {
 			let currentTime = new Date().getTime();
 			if(currentTime - boom.createdTime > 3000) {
-				boom_mid = boomBangs.create(boom.x, boom.y, 'boom_mid').setScale(0.5);
-				boom_left = boomBangs.create(boom.x - 22.5, boom.y, 'boom_left').setScale(0.5);
-				boom_down = boomBangs.create(boom.x, boom.y + 22.5, 'boom_down').setScale(0.5);
-				boom_right = boomBangs.create(boom.x + 22.5, boom.y, 'boom_right').setScale(0.5);
-				boom_up = boomBangs.create(boom.x, boom.y - 22.5, 'boom_up').setScale(0.5);
+				boom_mid = boomBangs.create(boom.x, boom.y, 'boom_mid');
+				boom_left = boomBangs.create(boom.x - 45, boom.y, 'boom_left');
+				boom_down = boomBangs.create(boom.x, boom.y + 45, 'boom_down');
+				boom_right = boomBangs.create(boom.x + 45, boom.y, 'boom_right');
+				boom_up = boomBangs.create(boom.x, boom.y - 45, 'boom_up');
 
 				boomBangs.children.entries.forEach(boom_bang => {
 					boom_bang.body.allowGravity = false;
@@ -315,25 +350,27 @@ var GameScene = new Phaser.Class({
 
 	boombangItem (boom_bang, obj)
 	{
-		obj.destroy();
-		let random = Phaser.Math.Between(1, 3);
-		let item;
-		console.log(random);
-		switch(random) {
-			case 1:
-				item = items.create(obj.x, obj.y, 'item_shoe').setScale(0.6);
-				item.type = 1;
-				break;
-			case 2:
-				item = items.create(obj.x, obj.y, 'item_bomb').setScale(0.6);
-				item.type = 2;
-				break;
-			case 3:
-				item = items.create(obj.x, obj.y, 'item_bombsize').setScale(0.6);
-				item.type = 3;
-				break;
+		if(obj.type === 2) {
+			obj.destroy();
+			let random = Phaser.Math.Between(1, 3);
+			let item;
+			console.log(random);
+			switch(random) {
+				case 1:
+					item = items.create(obj.x, obj.y, 'item_shoe');
+					item.type = 1;
+					break;
+				case 2:
+					item = items.create(obj.x, obj.y, 'item_bomb');
+					item.type = 2;
+					break;
+				case 3:
+					item = items.create(obj.x, obj.y, 'item_bombsize');
+					item.type = 3;
+					break;
+			}
+			item.body.allowGravity = false;
 		}
-		item.body.allowGravity = false;
 	},
 
 	getItems(player, item)
@@ -341,10 +378,10 @@ var GameScene = new Phaser.Class({
 		item.destroy();
 		switch(item.type) {
 			case 1:
-				speed += 30;
+				speed += 10;
 				break;
 			case 2:
-				maxBomb ++;
+				maxBoom ++;
 				break;
 		}
 	},
@@ -412,11 +449,12 @@ var GameScene = new Phaser.Class({
 	putBoom() 
 	{
 		timestamp = new Date().getTime();
-		if(timestamp - lasttime > 500 && booms.countActive(true) < maxBomb) {
+		if(timestamp - lasttime > 500 && booms.countActive(true) < maxBoom) {
 			console.log("A boom here");
-			boom = booms.create(player.x, player.y, 'boom').setScale(0.5);
+			boom = booms.create(player.x, player.y, 'boom').setScale(0.9);
 			boom.setBounce(0.4);
 	        boom.setCollideWorldBounds(true);
+	        boom.body.allowGravity = false;
 	        boom.createdTime = timestamp;
 			console.log(boom);
 			lasttime = timestamp;

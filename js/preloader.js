@@ -1,6 +1,8 @@
 // Phaser3 example game
 // preloader and loading bar
 
+
+
 var Preloader = new Phaser.Class({
 
 	Extends: Phaser.Scene,
@@ -71,8 +73,6 @@ var Preloader = new Phaser.Class({
 		this.load.atlas('sprites', 'img/spritearray.png', 'img/spritearray.json');
 
 		// image
-		this.load.image('sky', 'img/sky.png');
-
 		this.load.image('bomb', 'img/bomb.png');
 		this.load.image('boom', 'img/images/boom1.png');
 		this.load.image('boom_mid', 'img/images/bombbang_mid_2.png');
@@ -86,10 +86,19 @@ var Preloader = new Phaser.Class({
 		this.load.image('item_shoe', 'img/images/item_shoe.png');
 		this.load.image('item_bomb', 'img/images/item_bomb.png');
 		this.load.image('item_bombsize', 'img/images/item_bombsize.png');
-		this.load.image('shoe', 'img/images/');
-		this.load.image('shoe', 'img/images/');
+		this.load.image('item_stone', 'img/images/stone.png');
+		this.load.image('item_wood', 'img/images/wood.png');
+		this.load.image('item_grass', 'img/images/grass.png');
+		this.load.image('ground', 'img/images/background.jpg');
+		this.load.image('left_stone', 'img/images/vienTrai.png');
+		this.load.image('right_stone', 'img/images/vienPhai.png');
+		this.load.image('top_stone', 'img/images/vienTren.png');
+		this.load.image('bottom_stone', 'img/images/vienDuoi.png');
+		this.load.image('bottom_left', 'img/images/gocDuoiTrai.png');
+		this.load.image('bottom_right', 'img/images/gocDuoiPhai.png');
+		this.load.image('top_left', 'img/images/gocTrenTrai.png');
+		this.load.image('top_right', 'img/images/gocTrenPhai.png');
 		this.load.image('star', 'img/star.png');
-		this.load.image('ground', 'img/platform.png');
 		this.load.spritesheet('dude', 'img/dude.png', {
 			frameWidth: 32,
 			frameHeight: 48
