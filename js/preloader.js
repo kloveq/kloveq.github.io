@@ -80,9 +80,30 @@ var Preloader = new Phaser.Class({
 		this.load.image('boom_down', 'img/images/bombbang_down_2.png');
 		this.load.image('boom_right', 'img/images/bombbang_right_2.png');
 		this.load.image('boom_up', 'img/images/bombbang_up_2.png');
-		this.load.image('bomber', 'img/images/bomber_down.png');
-		this.load.image('bomber_left', 'img/images/bomber_left.png');
-		this.load.image('bomber_right', 'img/images/bomber_right.png');
+
+		// player
+		this.load.image('player_left_1', 'img/images/player_left_1.png');
+		this.load.image('player_left_2', 'img/images/player_left_2.png');
+		this.load.image('player_left_3', 'img/images/player_left_3.png');
+		this.load.image('player_left_4', 'img/images/player_left_4.png');
+		this.load.image('player_left_5', 'img/images/player_left_5.png');
+		this.load.image('player_right_1', 'img/images/player_right_1.png');
+		this.load.image('player_right_2', 'img/images/player_right_2.png');
+		this.load.image('player_right_3', 'img/images/player_right_3.png');
+		this.load.image('player_right_4', 'img/images/player_right_4.png');
+		this.load.image('player_right_5', 'img/images/player_right_5.png');
+		this.load.image('player_down_1', 'img/images/player_down_1.png');
+		this.load.image('player_down_2', 'img/images/player_down_2.png');
+		this.load.image('player_down_3', 'img/images/player_down_3.png');
+		this.load.image('player_down_4', 'img/images/player_down_4.png');
+		this.load.image('player_down_5', 'img/images/player_down_5.png');
+		this.load.image('player_up_1', 'img/images/player_up_1.png');
+		this.load.image('player_up_2', 'img/images/player_up_2.png');
+		this.load.image('player_up_3', 'img/images/player_up_3.png');
+		this.load.image('player_up_4', 'img/images/player_up_4.png');
+		this.load.image('player_up_5', 'img/images/player_up_5.png');
+
+		// item
 		this.load.image('item_shoe', 'img/images/item_shoe.png');
 		this.load.image('item_bomb', 'img/images/item_bomb.png');
 		this.load.image('item_bombsize', 'img/images/item_bombsize.png');
@@ -98,6 +119,7 @@ var Preloader = new Phaser.Class({
 		this.load.image('bottom_right', 'img/images/gocDuoiPhai.png');
 		this.load.image('top_left', 'img/images/gocTrenTrai.png');
 		this.load.image('top_right', 'img/images/gocTrenPhai.png');
+		this.load.image('backgroundHelp', 'img/images/backgroundHelp.png');
 		this.load.image('star', 'img/star.png');
 		this.load.spritesheet('dude', 'img/dude.png', {
 			frameWidth: 32,
@@ -138,6 +160,66 @@ var Preloader = new Phaser.Class({
 				frameRate: 15,
 				repeat: -1
 			});
+
+		this.anims.create({
+			key: 'player_left',
+			frames: [
+				{key: 'player_left_1'},
+				{key: 'player_left_2'},
+				{key: 'player_left_3'},
+				{key: 'player_left_4'},
+				{key: 'player_left_5'}
+			],
+			frameRate: 15,
+			repeat: -1
+		});
+			
+		this.anims.create({
+			key: 'player_right',
+			frames: [
+				{key: 'player_right_1'},
+				{key: 'player_right_2'},
+				{key: 'player_right_3'},
+				{key: 'player_right_4'},
+				{key: 'player_right_5'}
+			],
+			frameRate: 15,
+			repeat: -1
+		});
+			
+		this.anims.create({
+			key: 'player_up',
+			frames: [
+				{key: 'player_up_1'},
+				{key: 'player_up_2'},
+				{key: 'player_up_3'},
+				{key: 'player_up_4'},
+				{key: 'player_up_5'}
+			],
+			frameRate: 15,
+			repeat: -1
+		});
+			
+		this.anims.create({
+			key: 'player_down',
+			frames: [
+				{key: 'player_down_1'},
+				{key: 'player_down_2'},
+				{key: 'player_down_3'},
+				{key: 'player_down_4'},
+				{key: 'player_down_5'}
+			],
+			frameRate: 15,
+			repeat: -1
+		});
+			
+		this.anims.create({
+			key: 'player_stop',
+			frames: [
+				{key: 'player_down_1'}
+			],
+			frameRate: 15
+		});
 			
 		console.log('Preloader scene is ready, now start the actual game and never return to this scene');
 

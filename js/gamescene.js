@@ -6,9 +6,6 @@ var DIR_DOWN  = 2;
 var DIR_LEFT  = 4;
 var DIR_RIGHT = 8;
 
-var maxBoom =1;
-var speed = 80;
-var size = 45;
 
 const map = [
 	[11, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 12],
@@ -42,6 +39,8 @@ var GameScene = new Phaser.Class({
     preload: function ()
     {
     	gamestate = GAME_STATE.RUNNING;
+    	speed = 80;
+    	maxBoom = 1;
     },
 
     create: function ()
@@ -98,10 +97,13 @@ var GameScene = new Phaser.Class({
 
 		
 		// add player sprite
-		player = this.physics.add.sprite(400, 200, 'bomber').setScale(0.6);
+		player = this.physics.add.sprite(400, 200, 'player_down_1').setScale(0.5);
 
 		player.body.allowGravity = false;
 		player.setCollideWorldBounds(true);
+
+		// add enemies
+
 
 		// add bombs
 		bombs = this.physics.add.group();
@@ -179,22 +181,6 @@ var GameScene = new Phaser.Class({
 		this.physics.add.collider(bombs, platforms);
 		this.physics.add.collider(booms, platforms);
 
-		// create bomber animation
-		this.anims.create({
-			key: 'turn',
-			frames: [{key: 'bomber'}]
-		});
-
-		this.anims.create({
-			key: 'left',
-			frames: [{key: 'bomber_left'}]
-		});
-
-		this.anims.create({
-			key: 'right',
-			frames: [{key: 'bomber_right'}]
-		});
-
 		// quit to menu button
 		this.btnquit = this.addButton(720, 40, 'sprites', this.doBack, this, 'btn_close_hl', 'btn_close', 'btn_close_hl', 'btn_close');
     },
@@ -205,28 +191,11 @@ var GameScene = new Phaser.Class({
 		//this.dude.setVelocityX(0);
 		//this.dude.setVelocityY(0);
 
+		player.setVelocity(0);
+
 		// keyboard input
 
-		if (cursors.left.isDown) { 
-			player.setVelocityX(-speed); 
-			player.anims.play('left');
-		}
-		else if (cursors.right.isDown){ 
-			player.setVelocityX(speed); 
-			player.anims.play('right');
-		}
-		else if (cursors.up.isDown){ 
-			player.setVelocityY(-speed); 
-			player.anims.play('turn');
-		}
-		else if (cursors.down.isDown){ 
-			player.setVelocityY(speed); 
-			player.anims.play('turn');
-		}
-		else { 
-			player.setVelocity(0);
-			player.anims.play('turn');
-		}
+		this.playerMove();
 
 		if (cursors.space.isDown) {
 			this.putBoom();
@@ -299,6 +268,32 @@ var GameScene = new Phaser.Class({
 		
 	},
 
+	playerMove()
+	{
+		if(!cursors.left.isDown && !cursors.right.isDown && !cursors.up.isDown && !cursors.down.isDown) {
+			player.anims.play('player_stop');
+			return;
+		}
+
+		if (cursors.left.isDown) { 
+			player.setVelocityX(-speed); 
+			player.anims.play('player_left', true);
+		}
+		if (cursors.right.isDown){ 
+			player.setVelocityX(speed); 
+			player.anims.play('player_right', true);
+		}
+		if (cursors.up.isDown){ 
+			player.setVelocityY(-speed); 
+			player.anims.play('player_up', true);
+		}
+		if (cursors.down.isDown){ 
+			player.setVelocityY(speed); 
+			player.anims.play('player_down', true);
+		}
+
+	},
+
 	bombsOverlap(player, bomb)
 	{
 		console.log('doOverlapBomb -- hit!');
@@ -352,9 +347,8 @@ var GameScene = new Phaser.Class({
 	{
 		if(obj.type === 2) {
 			obj.destroy();
-			let random = Phaser.Math.Between(1, 3);
+			let random = Phaser.Math.Between(1, 6);
 			let item;
-			console.log(random);
 			switch(random) {
 				case 1:
 					item = items.create(obj.x, obj.y, 'item_shoe');
@@ -368,6 +362,8 @@ var GameScene = new Phaser.Class({
 					item = items.create(obj.x, obj.y, 'item_bombsize');
 					item.type = 3;
 					break;
+				default:
+					return;
 			}
 			item.body.allowGravity = false;
 		}
@@ -376,6 +372,7 @@ var GameScene = new Phaser.Class({
 	getItems(player, item)
 	{
 		item.destroy();
+		this.sfxcoin.play();
 		switch(item.type) {
 			case 1:
 				speed += 10;

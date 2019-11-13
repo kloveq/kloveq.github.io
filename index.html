@@ -45,6 +45,7 @@
 	var game = new Phaser.Game(config);
 
 	var player;
+	var enemies;
 	var cursors;
 	var platforms;
 	var gameitems;
@@ -57,10 +58,14 @@
 	var gamestate;
 	const GAME_STATE = {
 		MENU: 0,
-		RUNNING: 1,
-		PAUSE: 2,
-		GAMEOVER: 3
+		NEWGAME: 1,
+		RUNNING: 2,
+		PAUSE: 3,
+		GAMEOVER: 4
 	};
+	var maxBoom =1;
+	var speed = 80;
+	var size = 45;
 
     </script>
 
