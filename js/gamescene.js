@@ -106,18 +106,22 @@ var GameScene = new Phaser.Class({
 		enemies = this.physics.add.group();
 		boss1 = enemies.create(13 * size + 22.5, 13 * size + 22.5, 'boss_down').setScale(0.6);
 		boss1.body.allowGravity = false;
+		boss1.lasttime = 0;
 		boss1.setVelocityY(BOSS_SPEED);
 		boss2 = enemies.create(1 * size + 22.5, 13 * size + 22.5, 'boss_down').setScale(0.6);
 		boss2.body.allowGravity = false;
+		boss2.lasttime = 0;
 		boss2.setVelocityY(BOSS_SPEED);
-		boss2 = enemies.create(1 * size + 22.5, 1 * size + 22.5, 'boss_down').setScale(0.6);
-		boss2.body.allowGravity = false;
-		boss2.setVelocityY(BOSS_SPEED);
+		boss3 = enemies.create(1 * size + 22.5, 1 * size + 22.5, 'boss_down').setScale(0.6);
+		boss3.body.allowGravity = false;
+		boss3.setVelocityY(BOSS_SPEED);
+		boss3.lasttime = 0;
 
 		// add bombs
-		bombs = this.physics.add.group();
 		booms = this.physics.add.group();
+		bombs = this.physics.add.group();
 		boomBangs = this.physics.add.group();
+		bombBangs = this.physics.add.group();
 
 		// add items
 		items = this.physics.add.group();
@@ -163,6 +167,7 @@ var GameScene = new Phaser.Class({
 
 		this.physics.add.overlap(boomBangs, platforms, this.boombangItem, null, this);
 		this.physics.add.overlap(boomBangs, enemies, this.boombangEnemy, null, this);
+		this.physics.add.overlap(player, bombBangs, this.playerDies, null, this);
 
 		this.physics.add.overlap(player, items, this.getItems, null, this);
 		
@@ -225,8 +230,39 @@ var GameScene = new Phaser.Class({
 			}
 		});
 
+		// bombs check status
+		bombs.children.entries.forEach(boom => {
+			let currentTime = new Date().getTime();
+			if(currentTime - boom.createdTime > 3000) {
+				
+				boom_mid = bombBangs.create(boom.x, boom.y, 'boom_mid');
+				boom_left = bombBangs.create(boom.x - 45, boom.y, 'boom_left');
+				boom_down = bombBangs.create(boom.x, boom.y + 45, 'boom_down');
+				boom_right = bombBangs.create(boom.x + 45, boom.y, 'boom_right');
+				boom_up = bombBangs.create(boom.x, boom.y - 45, 'boom_up');
+
+				bombBangs.children.entries.forEach(boom_bang => {
+					boom_bang.body.allowGravity = false;
+					boom_bang.created_time = currentTime;
+				});
+
+				// play bomb sound
+				this.sfxbomb.play();
+
+				boom.destroy();
+			}
+		});
+
 		// boom bang check status
 		boomBangs.children.entries.forEach(boom_bang => {
+			let currentTime = new Date().getTime();
+			if(currentTime - boom_bang.created_time > 200) {
+				boom_bang.destroy();
+			}
+		});
+
+		// bombBangs check status
+		bombBangs.children.entries.forEach(boom_bang => {
 			let currentTime = new Date().getTime();
 			if(currentTime - boom_bang.created_time > 200) {
 				boom_bang.destroy();
@@ -237,6 +273,11 @@ var GameScene = new Phaser.Class({
 		enemies.children.entries.forEach(enemy => {
 			if(!enemy.body.touching.none) {
 				this.enemyMove(enemy);
+			}
+			let currentTime = new Date().getTime();
+			if(currentTime - enemy.lasttime > 3000) {
+				this.enemyPutBoom(enemy, currentTime);
+				enemy.lasttime = currentTime;
 			}
 		});
 
@@ -450,6 +491,7 @@ var GameScene = new Phaser.Class({
 				delay: 500      // wait 500 ms before starting
 			}
 		);
+		this.physics.pause();
 	},
 
 	playerWin() {
@@ -497,19 +539,13 @@ var GameScene = new Phaser.Class({
 		}
 	},
 
-	fireBomb() 
+	enemyPutBoom(enemy, currentTime) 
 	{
-		timestamp = new Date().getTime();
-		if(timestamp - lasttime > 1000 && bombs.countActive(true) < 3) {
-			console.log("A bomb here");
-			bomb = bombs.create(player.x, player.y, 'bomb');
-			bomb.setBounce(1);
-	        bomb.setCollideWorldBounds(true);
-	        bomb.setVelocity(Phaser.Math.Between(-200, 200), 200);
-	        bomb.body.allowGravity = false;
-			console.log(bomb);
-			lasttime = timestamp;
-		}
+		boom = bombs.create(enemy.x, enemy.y, 'boom').setScale(0.9);
+		boom.setBounce(0.4);
+        boom.setCollideWorldBounds(true);
+        boom.body.allowGravity = false;
+        boom.createdTime = currentTime;
 	},
 
     doBack ()
