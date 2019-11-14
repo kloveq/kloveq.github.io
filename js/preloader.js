@@ -1,6 +1,7 @@
 // Phaser3 example game
 // preloader and loading bar
 
+// frameRate: so frame trong 1 s
 
 
 var Preloader = new Phaser.Class({
@@ -103,6 +104,16 @@ var Preloader = new Phaser.Class({
 		this.load.image('player_up_4', 'img/images/player_up_4.png');
 		this.load.image('player_up_5', 'img/images/player_up_5.png');
 
+		// enemies
+		this.load.image('boss_down', 'img/images/boss_down.png');
+		this.load.image('boss_down_1', 'img/images/boss_down_1.png');
+		this.load.image('boss_up', 'img/images/boss_up.png');
+		this.load.image('boss_up_1', 'img/images/boss_up_1.png');
+		this.load.image('boss_right', 'img/images/boss_right.png');
+		this.load.image('boss_right_1', 'img/images/boss_right_1.png');
+		this.load.image('boss_left', 'img/images/boss_left.png');
+		this.load.image('boss_left_1', 'img/images/boss_left_1.png');
+
 		// item
 		this.load.image('item_shoe', 'img/images/item_shoe.png');
 		this.load.image('item_bomb', 'img/images/item_bomb.png');
@@ -170,7 +181,7 @@ var Preloader = new Phaser.Class({
 				{key: 'player_left_4'},
 				{key: 'player_left_5'}
 			],
-			frameRate: 15,
+			frameRate: 10,
 			repeat: -1
 		});
 			
@@ -183,7 +194,7 @@ var Preloader = new Phaser.Class({
 				{key: 'player_right_4'},
 				{key: 'player_right_5'}
 			],
-			frameRate: 15,
+			frameRate: 10,
 			repeat: -1
 		});
 			
@@ -196,7 +207,7 @@ var Preloader = new Phaser.Class({
 				{key: 'player_up_4'},
 				{key: 'player_up_5'}
 			],
-			frameRate: 15,
+			frameRate: 10,
 			repeat: -1
 		});
 			
@@ -209,7 +220,7 @@ var Preloader = new Phaser.Class({
 				{key: 'player_down_4'},
 				{key: 'player_down_5'}
 			],
-			frameRate: 15,
+			frameRate: 10,
 			repeat: -1
 		});
 			
@@ -217,8 +228,47 @@ var Preloader = new Phaser.Class({
 			key: 'player_stop',
 			frames: [
 				{key: 'player_down_1'}
+			]
+		});
+
+		this.anims.create({
+			key: 'boss_left',
+			frames: [
+				{key: 'boss_left'},
+				{key: 'boss_left_1'},
 			],
-			frameRate: 15
+			frameRate: 2,
+			repeat: -1
+		});
+			
+		this.anims.create({
+			key: 'boss_right',
+			frames: [
+				{key: 'boss_right'},
+				{key: 'boss_right_1'},
+			],
+			frameRate: 2,
+			repeat: -1
+		});
+			
+		this.anims.create({
+			key: 'boss_down',
+			frames: [
+				{key: 'boss_down'},
+				{key: 'boss_down_1'},
+			],
+			frameRate: 2,
+			repeat: -1
+		});
+			
+		this.anims.create({
+			key: 'boss_up',
+			frames: [
+				{key: 'boss_up'},
+				{key: 'boss_up_1'},
+			],
+			frameRate: 2,
+			repeat: -1
 		});
 			
 		console.log('Preloader scene is ready, now start the actual game and never return to this scene');

@@ -21,7 +21,7 @@ const map = [
 	[9, 0, 0, 0, 2, 2, 4, 2, 3, 2, 5, 2, 2, 0, 0, 0, 8],
 	[9, 0, 1, 0, 1, 2, 2, 2, 3, 2, 2, 2, 1, 0, 1, 0, 8],
 	[9, 0, 0, 0, 0, 0, 2, 2, 3, 2, 2, 0, 0, 0, 0, 0, 8],
-	[9, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 8],
+	[9, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 8],
 	[13, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 14]
 ];
 
@@ -103,7 +103,16 @@ var GameScene = new Phaser.Class({
 		player.setCollideWorldBounds(true);
 
 		// add enemies
-
+		enemies = this.physics.add.group();
+		boss1 = enemies.create(13 * size + 22.5, 13 * size + 22.5, 'boss_down').setScale(0.6);
+		boss1.body.allowGravity = false;
+		boss1.setVelocityY(BOSS_SPEED);
+		boss2 = enemies.create(1 * size + 22.5, 13 * size + 22.5, 'boss_down').setScale(0.6);
+		boss2.body.allowGravity = false;
+		boss2.setVelocityY(BOSS_SPEED);
+		boss2 = enemies.create(1 * size + 22.5, 1 * size + 22.5, 'boss_down').setScale(0.6);
+		boss2.body.allowGravity = false;
+		boss2.setVelocityY(BOSS_SPEED);
 
 		// add bombs
 		bombs = this.physics.add.group();
@@ -112,17 +121,6 @@ var GameScene = new Phaser.Class({
 
 		// add items
 		items = this.physics.add.group();
-
-		// add random coins and bombs
-		gameitems = this.physics.add.group();
-
-		gameitems.children.iterate(function (child) {
-			child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.6));
-		});
-
-		gameitems.children.iterate(function (child) {
-			child.setCollideWorldBounds(true);
-		});
 
 		// coin particles
 		var sparks = this.add.particles('sprites');
@@ -163,12 +161,8 @@ var GameScene = new Phaser.Class({
 		this.sfxcoin = this.sound.add('coin');
 		this.sfxbomb = this.sound.add('bomb');
 
-		// set up arcade physics, using `physics` requires "physics:{default: 'arcade'" when starting "new Phaser.Game(.."
-		this.physics.add.overlap(player, gameitems, this.doOverlapItem, null, this);
-		//this.physics.add.overlap(player, bombs, this.bombsOverlap, null, this);
-		this.physics.add.overlap(gameitems, bombs, this.bombsOverlapItem, null, this);
-
 		this.physics.add.overlap(boomBangs, platforms, this.boombangItem, null, this);
+		this.physics.add.overlap(boomBangs, enemies, this.boombangEnemy, null, this);
 
 		this.physics.add.overlap(player, items, this.getItems, null, this);
 		
@@ -177,9 +171,8 @@ var GameScene = new Phaser.Class({
 		
 		// collider
 		this.physics.add.collider(player, platforms);
-		this.physics.add.collider(gameitems, platforms);
-		this.physics.add.collider(bombs, platforms);
 		this.physics.add.collider(booms, platforms);
+		this.physics.add.collider(enemies, platforms);
 
 		// quit to menu button
 		this.btnquit = this.addButton(720, 40, 'sprites', this.doBack, this, 'btn_close_hl', 'btn_close', 'btn_close_hl', 'btn_close');
@@ -230,44 +223,16 @@ var GameScene = new Phaser.Class({
 				boom_bang.destroy();
 			}
 		});
-		
+
+		// enemy move
+		enemies.children.entries.forEach(enemy => {
+			if(!enemy.body.touching.none) {
+				this.enemyMove(enemy);
+			}
+		});
+
     },
 	
-    doOverlapItem: function (dud, obj) {
-		console.log('doOverlapItem -- hit!');
-
-		if(!cursors.down.isDown) {
-			return;
-		} else {
-			
-			// play coin sound
-			this.sfxcoin.play();
-
-			// get score
-			score += 10;
-			scoreText.setText('Score: ' + score);
-
-			// set emitter to coin position and emit particles
-			this.coinspark.setPosition(obj.x, obj.y);
-			this.coinspark.explode();	
-			
-			// Completely destroy and remove object from memory
-			obj.destroy();
-
-			// check coins
-			if(gameitems.countActive(true) === 0) {
-				this.playerWin();
-			};
-
-			// Hide the sprite and disable the body,
-			//   don't destroy sprite and potentially re-use memory at later time
-			//   when adding new sprites to gameitems
-			//gameitems.killAndHide(obj);
-			//obj.body.enable = false;
-		}
-		
-	},
-
 	playerMove()
 	{
 		if(!cursors.left.isDown && !cursors.right.isDown && !cursors.up.isDown && !cursors.down.isDown) {
@@ -294,6 +259,87 @@ var GameScene = new Phaser.Class({
 
 	},
 
+	enemyMove(enemy)
+	{
+		let touch_left = enemy.body.touching.left;
+		let touch_right = enemy.body.touching.right;
+		let touch_up = enemy.body.touching.up;
+		let touch_down = enemy.body.touching.down;
+
+		enemy.setVelocity(0);
+
+		let random = Phaser.Math.Between(1, 3);
+		if(touch_up) {
+			enemy.y ++;
+			switch(random) {
+				case 1:
+					enemy.anims.play('boss_right', true);
+					enemy.setVelocityX(BOSS_SPEED);
+					break;
+				case 2:
+					enemy.anims.play('boss_left', true);
+					enemy.setVelocityX(-BOSS_SPEED);
+					break;
+				case 3:
+					enemy.anims.play('boss_down', true);
+					enemy.setVelocityY(BOSS_SPEED);
+					break;
+			}
+		}
+
+		if(touch_left) {
+			enemy.x ++;
+			switch(random) {
+				case 1:
+					enemy.anims.play('boss_right', true);
+					enemy.setVelocityX(BOSS_SPEED);
+					break;
+				case 2:
+					enemy.anims.play('boss_up', true);
+					enemy.setVelocityY(-BOSS_SPEED);
+					break;
+				case 3:
+					enemy.anims.play('boss_down', true);
+					enemy.setVelocityY(BOSS_SPEED);
+					break;
+			}
+		}
+		if(touch_down) {
+			enemy.y --;
+			switch(random) {
+				case 1:
+					enemy.anims.play('boss_right', true);
+					enemy.setVelocityX(BOSS_SPEED);
+					break;
+				case 2:
+					enemy.anims.play('boss_left', true);
+					enemy.setVelocityX(-BOSS_SPEED);
+					break;
+				case 3:
+					enemy.anims.play('boss_up', true);
+					enemy.setVelocityY(-BOSS_SPEED);
+					break;
+			}
+		}
+		if(touch_right) {
+			enemy.x --;
+			switch(random) {
+				case 1:
+					enemy.anims.play('boss_up', true);
+					enemy.setVelocityY(-BOSS_SPEED);
+					break;
+				case 2:
+					enemy.anims.play('boss_left', true);
+					enemy.setVelocityX(BOSS_SPEED);
+					break;
+				case 3:
+					enemy.anims.play('boss_down', true);
+					enemy.setVelocityY(BOSS_SPEED);
+					break;
+			}
+		}
+	},
+
 	bombsOverlap(player, bomb)
 	{
 		console.log('doOverlapBomb -- hit!');
@@ -316,33 +362,6 @@ var GameScene = new Phaser.Class({
 		};
 	},
 	
-	bombsOverlapItem(item, bomb)
-	{
-		console.log('doOverlapBomb -- hit!');
-		// play coin sound
-		this.sfxbomb.play();
-
-		// get score
-		score += 10;
-		scoreText.setText('Score: ' + score);
-
-		// set emitters for bomb explosion
-		this.bombexpl1.setPosition(bomb.x, bomb.y);
-		this.bombexpl1.explode();
-
-		this.bombexpl2.setPosition(bomb.x, bomb.y);
-		this.bombexpl2.explode();
-
-		// Completely destroy and remove object from memory
-		bomb.destroy();
-		item.destroy();
-
-		// check coins
-		if(gameitems.countActive(true) === 0) {
-			this.playerWin();
-		};
-	},
-
 	boombangItem (boom_bang, obj)
 	{
 		if(obj.type === 2) {
@@ -366,6 +385,14 @@ var GameScene = new Phaser.Class({
 					return;
 			}
 			item.body.allowGravity = false;
+		}
+	},
+
+	boombangEnemy(boom_bang, enemy)
+	{
+		enemy.destroy();
+		if(enemies.countActive(true) === 0) {
+			this.playerWin();
 		}
 	},
 
