@@ -198,11 +198,20 @@ var GameScene = new Phaser.Class({
 		booms.children.entries.forEach(boom => {
 			let currentTime = new Date().getTime();
 			if(currentTime - boom.createdTime > 3000) {
+				if(bombsize) {
+					for (var i = 1; i <= bombsize; i++) {
+						boomBangs.create(boom.x - i * 45, boom.y, 'boom_mid');
+						boomBangs.create(boom.x + i * 45, boom.y, 'boom_mid');
+						boomBangs.create(boom.x, boom.y - i * 45, 'boom_mid');
+						boomBangs.create(boom.x, boom.y + i * 45, 'boom_mid');
+					}
+				}
+
 				boom_mid = boomBangs.create(boom.x, boom.y, 'boom_mid');
-				boom_left = boomBangs.create(boom.x - 45, boom.y, 'boom_left');
-				boom_down = boomBangs.create(boom.x, boom.y + 45, 'boom_down');
-				boom_right = boomBangs.create(boom.x + 45, boom.y, 'boom_right');
-				boom_up = boomBangs.create(boom.x, boom.y - 45, 'boom_up');
+				boom_left = boomBangs.create(boom.x - 45 - bombsize * 45, boom.y, 'boom_left');
+				boom_down = boomBangs.create(boom.x, boom.y + 45 + bombsize * 45, 'boom_down');
+				boom_right = boomBangs.create(boom.x + 45 + bombsize * 45, boom.y, 'boom_right');
+				boom_up = boomBangs.create(boom.x, boom.y - 45 - bombsize * 45, 'boom_up');
 
 				boomBangs.children.entries.forEach(boom_bang => {
 					boom_bang.body.allowGravity = false;
@@ -406,6 +415,9 @@ var GameScene = new Phaser.Class({
 				break;
 			case 2:
 				maxBoom ++;
+				break;
+			case 3:
+				bombsize ++;
 				break;
 		}
 	},
