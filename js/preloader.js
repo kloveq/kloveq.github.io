@@ -75,7 +75,14 @@ var Preloader = new Phaser.Class({
 
 		// image
 		this.load.image('bomb', 'img/bomb.png');
-		this.load.image('boom', 'img/images/boom1.png');
+		this.load.image('boom1', 'img/images/boom1.png');
+		this.load.image('boom2', 'img/images/boom2.png');
+		this.load.image('boom3', 'img/images/boom3.png');
+		this.load.image('boom4', 'img/images/boom4.png');
+		this.load.image('boom5', 'img/images/boom5.png');
+		this.load.image('boom6', 'img/images/boom6.png');
+		this.load.image('boom7', 'img/images/boom7.png');
+		this.load.image('boom', 'img/images/boom8.png');
 		this.load.image('boom_mid', 'img/images/bombbang_mid_2.png');
 		this.load.image('boom_left', 'img/images/bombbang_left_2.png');
 		this.load.image('boom_down', 'img/images/bombbang_down_2.png');
@@ -235,7 +242,7 @@ var Preloader = new Phaser.Class({
 			key: 'boss_left',
 			frames: [
 				{key: 'boss_left'},
-				{key: 'boss_left_1'},
+				{key: 'boss_left_1'}
 			],
 			frameRate: 2,
 			repeat: -1
@@ -245,7 +252,7 @@ var Preloader = new Phaser.Class({
 			key: 'boss_right',
 			frames: [
 				{key: 'boss_right'},
-				{key: 'boss_right_1'},
+				{key: 'boss_right_1'}
 			],
 			frameRate: 2,
 			repeat: -1
@@ -255,7 +262,7 @@ var Preloader = new Phaser.Class({
 			key: 'boss_down',
 			frames: [
 				{key: 'boss_down'},
-				{key: 'boss_down_1'},
+				{key: 'boss_down_1'}
 			],
 			frameRate: 2,
 			repeat: -1
@@ -265,10 +272,25 @@ var Preloader = new Phaser.Class({
 			key: 'boss_up',
 			frames: [
 				{key: 'boss_up'},
-				{key: 'boss_up_1'},
+				{key: 'boss_up_1'}
 			],
 			frameRate: 2,
 			repeat: -1
+		});
+
+		this.anims.create({
+			key: 'boom_animation',
+			frames: [
+				{key: 'boom1'},
+				{key: 'boom2'},
+				{key: 'boom3'},
+				{key: 'boom4'},
+				{key: 'boom5'},
+				{key: 'boom6'},
+				{key: 'boom7'}
+			],
+			frameRate: 5,
+			repeat: 1
 		});
 			
 		console.log('Preloader scene is ready, now start the actual game and never return to this scene');

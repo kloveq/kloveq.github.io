@@ -6,24 +6,6 @@ var DIR_DOWN  = 2;
 var DIR_LEFT  = 4;
 var DIR_RIGHT = 8;
 
-const map = [
-	[11, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 12],
-	[9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8],
-	[9, 0, 1, 2, 2, 0, 1, 0, 3, 0, 1, 2, 2, 0, 1, 0, 8],
-	[9, 0, 2, 2, 4, 2, 0, 3, 0, 3, 2, 2, 5, 2, 2, 0, 8],
-	[9, 2, 2, 4, 1, 4, 3, 0, 0, 0, 3, 5, 1, 5, 2, 2, 8],
-	[9, 2, 4, 4, 4, 4, 4, 2, 3, 2, 5, 5, 5, 5, 5, 2, 8],
-	[9, 2, 1, 4, 1, 4, 1, 2, 3, 2, 1, 5, 1, 5, 1, 2, 8],
-	[9, 2, 2, 4, 4, 4, 2, 0, 3, 0, 2, 5, 5, 5, 2, 2, 8],
-	[9, 0, 2, 2, 4, 4, 4, 2, 3, 2, 5, 5, 5, 5, 2, 0, 8],
-	[9, 0, 1, 2, 2, 4, 2, 0, 3, 0, 2, 5, 2, 2, 1, 0, 8],
-	[9, 0, 0, 0, 2, 2, 4, 2, 3, 2, 5, 2, 2, 0, 0, 0, 8],
-	[9, 0, 1, 0, 1, 2, 2, 2, 3, 2, 2, 2, 1, 0, 1, 0, 8],
-	[9, 0, 0, 0, 0, 0, 2, 2, 3, 2, 2, 0, 0, 0, 0, 0, 8],
-	[9, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 8],
-	[13, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 14]
-];
-
 var GameScene = new Phaser.Class({
 
     Extends: Phaser.Scene,
@@ -40,6 +22,7 @@ var GameScene = new Phaser.Class({
     	gamestate = GAME_STATE.RUNNING;
     	speed = 80;
     	maxBoom = 1;
+    	bombsize = 0;
     },
 
     create: function ()
@@ -51,49 +34,7 @@ var GameScene = new Phaser.Class({
 
 		// add platforms
 		platforms = this.physics.add.staticGroup();
-
-		map.forEach((row, rowIndex) => {
-			row.forEach((index, colIndex) => {
-				switch(index) {
-					case 1:
-						platforms.create((colIndex + 0.5) * size, (rowIndex + 0.5) * size, 'item_wood').setScale(0.5).refreshBody();
-						break;
-					case 2:
-						item = platforms.create((colIndex + 0.5) * size, (rowIndex + 0.5) * size, 'item_grass').setScale(0.9).refreshBody();
-						item.type = 2;
-						break;
-					case 3:
-						platforms.create((colIndex + 0.5) * size, (rowIndex + 0.5) * size, 'item_stone').setScale(0.9).refreshBody();
-						break;
-					case 6:
-						platforms.create((colIndex + 0.5) * size, (rowIndex + 0.5) * size, 'bottom_stone').setScale(0.9);
-						break;
-					case 7:
-						platforms.create((colIndex + 0.5) * size, (rowIndex + 0.5) * size, 'top_stone').setScale(0.9);
-						break;
-					case 8:
-						platforms.create((colIndex + 0.5) * size, (rowIndex + 0.5) * size, 'right_stone').setScale(0.9);
-						break;
-					case 9:
-						platforms.create((colIndex + 0.5) * size, (rowIndex + 0.5) * size, 'left_stone').setScale(0.9);
-						break;
-					case 11:
-						platforms.create((colIndex + 0.5) * size, (rowIndex + 0.5) * size, 'top_left').setScale(0.9);
-						break;
-					case 12:
-						platforms.create((colIndex + 0.5) * size, (rowIndex + 0.5) * size, 'top_right').setScale(0.9);
-						break;
-					case 13:
-						platforms.create((colIndex + 0.5) * size, (rowIndex + 0.5) * size, 'bottom_left').setScale(0.9);
-						break;
-					case 14:
-						platforms.create((colIndex + 0.5) * size, (rowIndex + 0.5) * size, 'bottom_right').setScale(0.9);
-						break;
-
-				}
-			});
-		});
-
+		platforms = buildMap(this, LEVEL1, platforms);
 		
 		// add player sprite
 		player = this.physics.add.sprite(400, 200, 'player_down_1').setScale(0.5);
@@ -103,18 +44,7 @@ var GameScene = new Phaser.Class({
 
 		// add enemies
 		enemies = this.physics.add.group();
-		boss1 = enemies.create(13 * size + 22.5, 13 * size + 22.5, 'boss_down').setScale(0.6);
-		boss1.body.allowGravity = false;
-		boss1.lasttime = 0;
-		boss1.setVelocityY(BOSS_SPEED);
-		boss2 = enemies.create(1 * size + 22.5, 13 * size + 22.5, 'boss_down').setScale(0.6);
-		boss2.body.allowGravity = false;
-		boss2.lasttime = 0;
-		boss2.setVelocityY(BOSS_SPEED);
-		boss3 = enemies.create(1 * size + 22.5, 1 * size + 22.5, 'boss_down').setScale(0.6);
-		boss3.body.allowGravity = false;
-		boss3.setVelocityY(BOSS_SPEED);
-		boss3.lasttime = 0;
+		enemies = createEnemies(this, ENEMY_LEVEL1, enemies);
 
 		// add bombs
 		booms = this.physics.add.group();
@@ -533,22 +463,20 @@ var GameScene = new Phaser.Class({
 	{
 		timestamp = new Date().getTime();
 		if(timestamp - lasttime > 500 && booms.countActive(true) < maxBoom) {
-			console.log("A boom here");
-			boom = booms.create(player.x, player.y, 'boom').setScale(0.9);
-			boom.setBounce(0.4);
-	        boom.setCollideWorldBounds(true);
+			boom = booms.create(player.x, player.y, 'boom').setScale(0.8);
+			boom.on('animationcomplete', ()=>{ console.log("a boom here"); }, this);
+			boom.play('boom_animation');
 	        boom.body.allowGravity = false;
 	        boom.createdTime = timestamp;
-			console.log(boom);
 			lasttime = timestamp;
 		}
 	},
 
 	enemyPutBoom(enemy, currentTime) 
 	{
-		boom = bombs.create(enemy.x, enemy.y, 'boom').setScale(0.9);
-		boom.setBounce(0.4);
-        boom.setCollideWorldBounds(true);
+		boom = bombs.create(enemy.x, enemy.y, 'boom').setScale(0.8);
+		boom.on('animationcomplete', ()=>{}, this);
+		boom.play('boom_animation');
         boom.body.allowGravity = false;
         boom.createdTime = currentTime;
 	},
