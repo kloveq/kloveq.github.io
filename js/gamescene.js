@@ -6,7 +6,6 @@ var DIR_DOWN  = 2;
 var DIR_LEFT  = 4;
 var DIR_RIGHT = 8;
 
-
 const map = [
 	[11, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 12],
 	[9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8],
@@ -173,6 +172,12 @@ var GameScene = new Phaser.Class({
 		
 		// player input
 		cursors = this.input.keyboard.createCursorKeys();
+		keys = this.input.keyboard.addKeys({
+			up: 'W',
+			down: 'S',
+			left: 'A',
+			right: 'D'
+		});
 		
 		// collider
 		this.physics.add.collider(player, platforms);
@@ -285,24 +290,24 @@ var GameScene = new Phaser.Class({
 	
 	playerMove()
 	{
-		if(!cursors.left.isDown && !cursors.right.isDown && !cursors.up.isDown && !cursors.down.isDown) {
+		if(!cursors.left.isDown && !cursors.right.isDown && !cursors.up.isDown && !cursors.down.isDown && !keys.up.isDown && !keys.down.isDown && !keys.left.isDown && !keys.right.isDown) {
 			player.anims.play('player_stop');
 			return;
 		}
 
-		if (cursors.left.isDown) { 
+		if (cursors.left.isDown || keys.left.isDown) { 
 			player.setVelocityX(-speed); 
 			player.anims.play('player_left', true);
 		}
-		if (cursors.right.isDown){ 
+		if (cursors.right.isDown || keys.right.isDown){ 
 			player.setVelocityX(speed); 
 			player.anims.play('player_right', true);
 		}
-		if (cursors.up.isDown){ 
+		if (cursors.up.isDown || keys.up.isDown){ 
 			player.setVelocityY(-speed); 
 			player.anims.play('player_up', true);
 		}
-		if (cursors.down.isDown){ 
+		if (cursors.down.isDown || keys.down.isDown){ 
 			player.setVelocityY(speed); 
 			player.anims.play('player_down', true);
 		}
