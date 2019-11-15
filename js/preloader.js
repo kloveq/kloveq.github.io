@@ -74,7 +74,6 @@ var Preloader = new Phaser.Class({
 		this.load.atlas('sprites', 'img/spritearray.png', 'img/spritearray.json');
 
 		// image
-		this.load.image('bomb', 'img/bomb.png');
 		this.load.image('boom1', 'img/images/boom1.png');
 		this.load.image('boom2', 'img/images/boom2.png');
 		this.load.image('boom3', 'img/images/boom3.png');
@@ -138,11 +137,6 @@ var Preloader = new Phaser.Class({
 		this.load.image('top_left', 'img/images/gocTrenTrai.png');
 		this.load.image('top_right', 'img/images/gocTrenPhai.png');
 		this.load.image('backgroundHelp', 'img/images/backgroundHelp.png');
-		this.load.image('star', 'img/star.png');
-		this.load.spritesheet('dude', 'img/dude.png', {
-			frameWidth: 32,
-			frameHeight: 48
-		});
 
 		// font
 		this.load.bitmapFont('fontwhite', 'img/fontwhite.png', 'img/fontwhite.xml');
@@ -290,7 +284,7 @@ var Preloader = new Phaser.Class({
 				{key: 'boom7'}
 			],
 			frameRate: 5,
-			repeat: 1
+			repeat: -1
 		});
 			
 		console.log('Preloader scene is ready, now start the actual game and never return to this scene');

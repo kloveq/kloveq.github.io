@@ -97,6 +97,7 @@ var GameScene = new Phaser.Class({
 		this.physics.add.overlap(boomBangs, platforms, this.boombangItem, null, this);
 		this.physics.add.overlap(boomBangs, enemies, this.boombangEnemy, null, this);
 		this.physics.add.overlap(player, bombBangs, this.playerDies, null, this);
+		this.physics.add.overlap(player, enemies, this.playerDies, null, this);
 
 		this.physics.add.overlap(player, items, this.getItems, null, this);
 		
@@ -259,15 +260,15 @@ var GameScene = new Phaser.Class({
 			switch(random) {
 				case 1:
 					enemy.anims.play('boss_right', true);
-					enemy.setVelocityX(BOSS_SPEED);
+					enemy.setVelocityX(boss_speed);
 					break;
 				case 2:
 					enemy.anims.play('boss_left', true);
-					enemy.setVelocityX(-BOSS_SPEED);
+					enemy.setVelocityX(-boss_speed);
 					break;
 				case 3:
 					enemy.anims.play('boss_down', true);
-					enemy.setVelocityY(BOSS_SPEED);
+					enemy.setVelocityY(boss_speed);
 					break;
 			}
 		}
@@ -277,15 +278,15 @@ var GameScene = new Phaser.Class({
 			switch(random) {
 				case 1:
 					enemy.anims.play('boss_right', true);
-					enemy.setVelocityX(BOSS_SPEED);
+					enemy.setVelocityX(boss_speed);
 					break;
 				case 2:
 					enemy.anims.play('boss_up', true);
-					enemy.setVelocityY(-BOSS_SPEED);
+					enemy.setVelocityY(-boss_speed);
 					break;
 				case 3:
 					enemy.anims.play('boss_down', true);
-					enemy.setVelocityY(BOSS_SPEED);
+					enemy.setVelocityY(boss_speed);
 					break;
 			}
 		}
@@ -294,15 +295,15 @@ var GameScene = new Phaser.Class({
 			switch(random) {
 				case 1:
 					enemy.anims.play('boss_right', true);
-					enemy.setVelocityX(BOSS_SPEED);
+					enemy.setVelocityX(boss_speed);
 					break;
 				case 2:
 					enemy.anims.play('boss_left', true);
-					enemy.setVelocityX(-BOSS_SPEED);
+					enemy.setVelocityX(-boss_speed);
 					break;
 				case 3:
 					enemy.anims.play('boss_up', true);
-					enemy.setVelocityY(-BOSS_SPEED);
+					enemy.setVelocityY(-boss_speed);
 					break;
 			}
 		}
@@ -311,15 +312,15 @@ var GameScene = new Phaser.Class({
 			switch(random) {
 				case 1:
 					enemy.anims.play('boss_up', true);
-					enemy.setVelocityY(-BOSS_SPEED);
+					enemy.setVelocityY(-boss_speed);
 					break;
 				case 2:
 					enemy.anims.play('boss_left', true);
-					enemy.setVelocityX(BOSS_SPEED);
+					enemy.setVelocityX(boss_speed);
 					break;
 				case 3:
 					enemy.anims.play('boss_down', true);
-					enemy.setVelocityY(BOSS_SPEED);
+					enemy.setVelocityY(boss_speed);
 					break;
 			}
 		}
@@ -376,6 +377,7 @@ var GameScene = new Phaser.Class({
 	boombangEnemy(boom_bang, enemy)
 	{
 		enemy.destroy();
+		boss_speed += 60;
 		if(enemies.countActive(true) === 0) {
 			this.playerWin();
 		}
@@ -464,7 +466,6 @@ var GameScene = new Phaser.Class({
 		timestamp = new Date().getTime();
 		if(timestamp - lasttime > 500 && booms.countActive(true) < maxBoom) {
 			boom = booms.create(player.x, player.y, 'boom').setScale(0.8);
-			boom.on('animationcomplete', ()=>{ console.log("a boom here"); }, this);
 			boom.play('boom_animation');
 	        boom.body.allowGravity = false;
 	        boom.createdTime = timestamp;
@@ -475,7 +476,6 @@ var GameScene = new Phaser.Class({
 	enemyPutBoom(enemy, currentTime) 
 	{
 		boom = bombs.create(enemy.x, enemy.y, 'boom').setScale(0.8);
-		boom.on('animationcomplete', ()=>{}, this);
 		boom.play('boom_animation');
         boom.body.allowGravity = false;
         boom.createdTime = currentTime;
