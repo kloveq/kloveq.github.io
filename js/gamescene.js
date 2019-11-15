@@ -23,6 +23,7 @@ var GameScene = new Phaser.Class({
     	speed = 80;
     	maxBoom = 1;
     	bombsize = 0;
+    	boss_speed = 60;
     },
 
     create: function ()
@@ -150,9 +151,13 @@ var GameScene = new Phaser.Class({
 
 				boom_mid = boomBangs.create(boom.x, boom.y, 'boom_mid');
 				boom_left = boomBangs.create(boom.x - 45 - bombsize * 45, boom.y, 'boom_left');
+				boom_left.type = 'left';
 				boom_down = boomBangs.create(boom.x, boom.y + 45 + bombsize * 45, 'boom_down');
+				boom_down.type = 'down';
 				boom_right = boomBangs.create(boom.x + 45 + bombsize * 45, boom.y, 'boom_right');
+				boom_right.type = 'right';
 				boom_up = boomBangs.create(boom.x, boom.y - 45 - bombsize * 45, 'boom_up');
+				boom_up.type = 'up';
 
 				boomBangs.children.entries.forEach(boom_bang => {
 					boom_bang.body.allowGravity = false;
@@ -465,7 +470,10 @@ var GameScene = new Phaser.Class({
 	{
 		timestamp = new Date().getTime();
 		if(timestamp - lasttime > 500 && booms.countActive(true) < maxBoom) {
-			boom = booms.create(player.x, player.y, 'boom').setScale(0.8);
+			x = Math.round((player.x -22.5)/45);
+			y = Math.round((player.y -22.5)/45);
+			boom = booms.create(x * 45 + 22.5, y * 45 + 22.5, 'boom').setScale(0.8);
+			boom.tile = [x, y];
 			boom.play('boom_animation');
 	        boom.body.allowGravity = false;
 	        boom.createdTime = timestamp;
@@ -475,7 +483,9 @@ var GameScene = new Phaser.Class({
 
 	enemyPutBoom(enemy, currentTime) 
 	{
-		boom = bombs.create(enemy.x, enemy.y, 'boom').setScale(0.8);
+		x = Math.round((enemy.x -22.5)/45);
+		y = Math.round((enemy.y -22.5)/45);
+		boom = bombs.create(x * 45 + 22.5, y * 45 + 22.5, 'boom').setScale(0.8);
 		boom.play('boom_animation');
         boom.body.allowGravity = false;
         boom.createdTime = currentTime;

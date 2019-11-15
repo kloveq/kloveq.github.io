@@ -71,7 +71,7 @@ createEnemies = (scene, level, enemies) => {
 		enemy = enemies.create(row[0] * SIZE + 22.5, row[1] * SIZE + 22.5, 'boss_down').setScale(0.6);
 		enemy.body.allowGravity = false;
 		enemy.lasttime = 0;
-		enemy.setVelocityY(BOSS_SPEED);
+		enemy.setVelocityY(boss_speed);
 	});
 	return enemies;
 }
