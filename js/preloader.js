@@ -85,8 +85,12 @@ var Preloader = new Phaser.Class({
 		this.load.image('boom_mid', 'img/images/bombbang_mid_2.png');
 		this.load.image('boom_left', 'img/images/bombbang_left_2.png');
 		this.load.image('boom_down', 'img/images/bombbang_down_2.png');
+		this.load.image('boom_left1', 'img/images/bombbang_left_1.png');
+		this.load.image('boom_down1', 'img/images/bombbang_down_1.png');
 		this.load.image('boom_right', 'img/images/bombbang_right_2.png');
 		this.load.image('boom_up', 'img/images/bombbang_up_2.png');
+		this.load.image('boom_right1', 'img/images/bombbang_right_1.png');
+		this.load.image('boom_up1', 'img/images/bombbang_up_1.png');
 
 		// player
 		this.load.image('player_left_1', 'img/images/player_left_1.png');

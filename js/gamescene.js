@@ -138,37 +138,7 @@ var GameScene = new Phaser.Class({
 
 		// booms check status
 		booms.children.entries.forEach(boom => {
-			let currentTime = new Date().getTime();
-			if(currentTime - boom.createdTime > 3000) {
-				if(bombsize) {
-					for (var i = 1; i <= bombsize; i++) {
-						boomBangs.create(boom.x - i * 45, boom.y, 'boom_mid');
-						boomBangs.create(boom.x + i * 45, boom.y, 'boom_mid');
-						boomBangs.create(boom.x, boom.y - i * 45, 'boom_mid');
-						boomBangs.create(boom.x, boom.y + i * 45, 'boom_mid');
-					}
-				}
-
-				boom_mid = boomBangs.create(boom.x, boom.y, 'boom_mid');
-				boom_left = boomBangs.create(boom.x - 45 - bombsize * 45, boom.y, 'boom_left');
-				boom_left.type = 'left';
-				boom_down = boomBangs.create(boom.x, boom.y + 45 + bombsize * 45, 'boom_down');
-				boom_down.type = 'down';
-				boom_right = boomBangs.create(boom.x + 45 + bombsize * 45, boom.y, 'boom_right');
-				boom_right.type = 'right';
-				boom_up = boomBangs.create(boom.x, boom.y - 45 - bombsize * 45, 'boom_up');
-				boom_up.type = 'up';
-
-				boomBangs.children.entries.forEach(boom_bang => {
-					boom_bang.body.allowGravity = false;
-					boom_bang.created_time = currentTime;
-				});
-
-				// play bomb sound
-				this.sfxbomb.play();
-
-				boom.destroy();
-			}
+			this.createBoomBangs(boom);
 		});
 
 		// bombs check status
@@ -331,26 +301,54 @@ var GameScene = new Phaser.Class({
 		}
 	},
 
-	bombsOverlap(player, bomb)
+	createBoomBangs(boom)
 	{
-		console.log('doOverlapBomb -- hit!');
-		// play bomb sound
-		this.sfxbomb.play();
+		// console.log(boom.tile);
 
-		// set emitters for bomb explosion
-		this.bombexpl1.setPosition(bomb.x, bomb.y);
-		this.bombexpl1.explode();
+		// if(LEVEL1[boom.tile[1]][boom.tile[0]-1]) {
+		// 	console.log('left blocked');
+		// 	console.log(bombsize);
+		// }
+		// if(LEVEL1[boom.tile[1]][boom.tile[0]+1]) {
+		// 	console.log('right blocked')
+		// }
+		// if(LEVEL1[boom.tile[1]-1][boom.tile[0]]) {
+		// 	console.log('up blocked')
+		// }
+		// if(LEVEL1[boom.tile[1]+1][boom.tile[0]]) {
+		// 	console.log('down blocked')
+		// }
+			let currentTime = new Date().getTime();
+			if(currentTime - boom.createdTime > 3000) {
+				if(bombsize) {
+					for (var i = 1; i <= bombsize; i++) {
+						boomBangs.create(boom.x - i * 45, boom.y, 'boom_left1');
+						boomBangs.create(boom.x + i * 45, boom.y, 'boom_right1');
+						boomBangs.create(boom.x, boom.y - i * 45, 'boom_up1');
+						boomBangs.create(boom.x, boom.y + i * 45, 'boom_down1');
+					}
+				}
 
-		this.bombexpl2.setPosition(bomb.x, bomb.y);
-		this.bombexpl2.explode();
+				boom_mid = boomBangs.create(boom.x, boom.y, 'boom_mid');
+				boom_left = boomBangs.create(boom.x - 45 - bombsize * 45, boom.y, 'boom_left');
+				boom_left.type = 'left';
+				boom_down = boomBangs.create(boom.x, boom.y + 45 + bombsize * 45, 'boom_down');
+				boom_down.type = 'down';
+				boom_right = boomBangs.create(boom.x + 45 + bombsize * 45, boom.y, 'boom_right');
+				boom_right.type = 'right';
+				boom_up = boomBangs.create(boom.x, boom.y - 45 - bombsize * 45, 'boom_up');
+				boom_up.type = 'up';
 
-		// Completely destroy and remove object from memory
-		bomb.destroy();
+				boomBangs.children.entries.forEach(boom_bang => {
+					boom_bang.body.allowGravity = false;
+					boom_bang.created_time = currentTime;
+				});
 
-		// check coins
-		if(bombs.countActive(true) === 0) {
-			this.playerWin();
-		};
+				// play bomb sound
+				this.sfxbomb.play();
+
+				boom.destroy();
+			}
 	},
 	
 	boombangItem (boom_bang, obj)
@@ -401,6 +399,9 @@ var GameScene = new Phaser.Class({
 				break;
 			case 3:
 				bombsize ++;
+				if(bombsize > 1) {
+					bombsize = 1;
+				}
 				break;
 		}
 	},
