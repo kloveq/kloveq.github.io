@@ -1,338 +1,267 @@
-
 <!DOCTYPE html>
-<html>
-  <head>
-    
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html xmlns='http://www.w3.org/1999/xhtml' lang='' xml:lang=''>
+<head>
+	<meta charset='utf-8' />
+	<meta name='viewport' content='width=device-width, user-scalable=no' />
+	<title></title>
+	<style type='text/css'>
 
-        <link rel="shortcut icon" href="/static/img/favicon.ico" />
-        <title>Home - Pham Khai</title>
-        <meta name="author" content="Luyen Tran" />
-        <meta name="description" content="Blog" />
-        <meta name="keywords" content="Blog, Luyen Tran, " />
+		body {
+			touch-action: none;
+			margin: 0;
+			border: 0 none;
+			padding: 0;
+			text-align: center;
+			background-color: black;
+		}
 
-        <meta content="" property="fb:app_id">
-        <meta content="Luyen Tran" property="og:site_name">
-        
-          <meta content="Blog" property="og:title">
-        
-        
-          <meta content="article" property="og:type">
-        
-        
-          <meta content="Luyen's Blog" property="og:description">
-        
-        
-          <meta content="https://luyentm.github.io//" property="og:url">
-        
-        
-        
-          <meta content="https://luyentm.github.io//static/img/logo-high-resolution.png" property="og:image">
-        
-        
-        
-        <meta name="twitter:card" content="summary">
-        <meta name="twitter:site" content="@">
-        <meta name="twitter:creator" content="@">
-        
-          <meta name="twitter:title" content="Blog">
-        
-        
-          <meta name="twitter:url" content="https://luyentm.github.io//">
-        
-        
-          <meta name="twitter:description" content="Luyen's Blog">
-        
-        
+		#canvas {
+			display: block;
+			margin: 0;
+			color: white;
+		}
 
-      <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
-      
-        <!-- Custom Fonts -->
-        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+		#canvas:focus {
+			outline: none;
+		}
 
-        <!-- FontAwesome icons -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/74dfc6cf47.css">
+		.godot {
+			font-family: 'Noto Sans', 'Droid Sans', Arial, sans-serif;
+			color: #e0e0e0;
+			background-color: #3b3943;
+			background-image: linear-gradient(to bottom, #403e48, #35333c);
+			border: 1px solid #45434e;
+			box-shadow: 0 0 1px 1px #2f2d35;
+		}
 
-        <!-- Core BootStrap CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <!-- Material Design CSS -->
-        <link rel="stylesheet" href="/static/css/bootstrap-material-design.min.css">
 
-        <!-- syntax highlighting CSS -->
-        <link rel="stylesheet" href="/static/css/syntax.css">
+		/* Status display
+		 * ============== */
 
-        <!-- Custom CSS -->        
-        <link rel="stylesheet" href="/static/css/thickbox.css">
-        <link rel="stylesheet" href="/static/css/main.css">
-        <link rel="stylesheet" href="/static/css/projects.css">
+		#status {
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			/* don't consume click events - make children visible explicitly */
+			visibility: hidden;
+		}
 
-        <script type="text/javascript">
-          //loadingImage is relative to project dir
-          var tb_pathToImage = "/static/img/loadingAnimation.gif";
-        </script>
+		#status-progress {
+			width: 366px;
+			height: 7px;
+			background-color: #38363A;
+			border: 1px solid #444246;
+			padding: 1px;
+			box-shadow: 0 0 2px 1px #1B1C22;
+			border-radius: 2px;
+			visibility: visible;
+		}
 
-  </head>
+		@media only screen and (orientation:portrait) {
+			#status-progress {
+				width: 61.8%;
+			}
+		}
 
-  <body class="home overflow-hidden">
-    <div class="header-panel shadow-z-2">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3 col-sm-4 col-xs-12">
-            <div class="row-picture">
-              <img id="about" class="logo-img" src="/static/img/avatar.png" height="75px" width="75px">
-            </div>
-            <div class="row-details">
-              <h4 class="list-group-item-heading">Luyen Tran</h4>
-              <p class="list-group-item-text">Coder</p>
-              <div class="social-icons">
-	
-        <a class="icon" target="_blank" href="https://www.facebook.com/luyentm"><i class="fa fa-facebook"></i></a>
-    
-        <a class="icon" target="_blank" href="https://www.linkedin.com/in/tr%E1%BA%A7n-minh-luy%E1%BB%87n-76512397"><i class="fa fa-linkedin"></i></a>
-    
-        <a class="icon" target="_blank" href="https://github.com/luyentm"><i class="fa fa-github"></i></a>
-    
-        <a class="icon" target="_blank" href="https://luyentm.github.io/music/"><i class="fa fa-music"></i></a>
-    
-        <a class="icon" target="_blank" href="http://tranminhluyen.tk/"><i class="fa fa-video-camera"></i></a>
-    
-</div>
+		#status-progress-inner {
+			height: 100%;
+			width: 0;
+			box-sizing: border-box;
+			transition: width 0.5s linear;
+			background-color: #202020;
+			border: 1px solid #222223;
+			box-shadow: 0 0 1px 1px #27282E;
+			border-radius: 3px;
+		}
 
-            </div>
-            <div class="navbar-header pull-right">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <i class="fa fa-2x fa-bars"></i>
-              </button>
-            </div>
-          </div>
-          <div class="col-md-9 col-sm-8 col-xs-12">
-            <h2 class="blog-title-pro">Blog</h2>
-            <p class="info">
-              
-              
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+		#status-indeterminate {
+			visibility: visible;
+			position: relative;
+		}
 
-    <div class="container main outer">
-      <div class="row">
-        <div class="col-md-3 col-xs-12">
-              <nav class="menu">
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="list-separator nav navbar-nav well well-primary default">
+		#status-indeterminate > div {
+			width: 4.5px;
+			height: 0;
+			border-style: solid;
+			border-width: 9px 3px 0 3px;
+			border-color: #2b2b2b transparent transparent transparent;
+			transform-origin: center 21px;
+			position: absolute;
+		}
 
-	
-	
-	
-	
-	
-	
-    
-	
-	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12 current-menu-item "><a href="/" target="_self"><i class="fa fa-home"></i> Home</a></li>
+		#status-indeterminate > div:nth-child(1) { transform: rotate( 22.5deg); }
+		#status-indeterminate > div:nth-child(2) { transform: rotate( 67.5deg); }
+		#status-indeterminate > div:nth-child(3) { transform: rotate(112.5deg); }
+		#status-indeterminate > div:nth-child(4) { transform: rotate(157.5deg); }
+		#status-indeterminate > div:nth-child(5) { transform: rotate(202.5deg); }
+		#status-indeterminate > div:nth-child(6) { transform: rotate(247.5deg); }
+		#status-indeterminate > div:nth-child(7) { transform: rotate(292.5deg); }
+		#status-indeterminate > div:nth-child(8) { transform: rotate(337.5deg); }
 
-	
-	
-	
-	
-	
-	
-    
-	
-	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12  "><a href="/about/" target="_self"><i class="fa fa-comments"></i> About</a></li>
+		#status-notice {
+			margin: 0 100px;
+			line-height: 1.3;
+			visibility: visible;
+			padding: 4px 6px;
+			visibility: visible;
+		}
+	</style>
 
-	
-	
-	
-	
-	
-	
-    
-	
-	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12  "><a href="/projects" target="_self"><i class="fa fa-desktop"></i> Projects</a></li>
+</head>
+<body>
+	<canvas id='canvas'>
+		HTML5 canvas appears to be unsupported in the current browser.<br />
+		Please try updating or use a different browser.
+	</canvas>
+	<div id='status'>
+		<div id='status-progress' style='display: none;' oncontextmenu='event.preventDefault();'><div id ='status-progress-inner'></div></div>
+		<div id='status-indeterminate' style='display: none;' oncontextmenu='event.preventDefault();'>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div id='status-notice' class='godot' style='display: none;'></div>
+	</div>
 
-	
-	
-	
-	
-	
-	
-    
-	
-	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12  "><a href="/feed.xml" target="_blank"><i class="fa fa-feed"></i> XML Feed</a></li>
+	<script type='text/javascript' src='Demo.js'></script>
+	<script type='text/javascript'>//<![CDATA[
 
-</ul>
+		var engine = new Engine;
+		var setStatusMode;
+		var setStatusNotice;
 
-    </div>
-    </nav>
+		(function() {
 
-        </div>
-        <div class="col-md-9 col-xs-12 full">
-          <div class="well">
-    <div class="list-group">
-      
-      <div class="list-group-item">
-        <div class="row-action-primary">
-          <i class="fa fa-sticky-note"></i>
-        </div>
-        <div class="row-content">
-          <div class="least-content">14 Mar 2018</div>
-          <h4 class="list-group-item-heading"><a href="/android/2018/03/14/privacy-policy.html">Android App, Games Privacy Policy</a></h4>
+			const EXECUTABLE_NAME = 'Demo';
+			const MAIN_PACK = 'Demo.pck';
+			const INDETERMINATE_STATUS_STEP_MS = 100;
 
-          <p class="list-group-item-text">Privacy Policy Faker built the [Đập chuột 2018] app as a Free app. This SERVICE is provided by Faker at...</p>
-        </div>
-      </div>
-      <div class="list-group-separator"></div>
-      
-      <div class="list-group-item">
-        <div class="row-action-primary">
-          <i class="fa fa-sticky-note"></i>
-        </div>
-        <div class="row-content">
-          <div class="least-content">15 May 2017</div>
-          <h4 class="list-group-item-heading"><a href="/android/2017/05/15/football-android.html">[App] Ứng dụng xem bóng đá mượt nhất hệ mặt trời</a></h4>
+			var canvas = document.getElementById('canvas');
+			var statusProgress = document.getElementById('status-progress');
+			var statusProgressInner = document.getElementById('status-progress-inner');
+			var statusIndeterminate = document.getElementById('status-indeterminate');
+			var statusNotice = document.getElementById('status-notice');
 
-          <p class="list-group-item-text">Ứng dụng xem bóng đá, tivi trên điện thoại android Đây là ứng dụng xem tivi, bóng đá tốt nhất...</p>
-        </div>
-      </div>
-      <div class="list-group-separator"></div>
-      
-      <div class="list-group-item">
-        <div class="row-action-primary">
-          <i class="fa fa-sticky-note"></i>
-        </div>
-        <div class="row-content">
-          <div class="least-content">22 Feb 2017</div>
-          <h4 class="list-group-item-heading"><a href="/libgdx/2017/02/22/libgdx-hello-world.html">[LIBGDX][Chapter 2] Hello Libgdx's World</a></h4>
+			var initializing = true;
+			var statusMode = 'hidden';
 
-          <p class="list-group-item-text">Viết chương trình Hello world Chúng ta sẽ bắt đầu loạt bài Libgdx với bài mở đầu về chương trình...</p>
-        </div>
-      </div>
-      <div class="list-group-separator"></div>
-      
-      <div class="list-group-item">
-        <div class="row-action-primary">
-          <i class="fa fa-sticky-note"></i>
-        </div>
-        <div class="row-content">
-          <div class="least-content">21 Feb 2017</div>
-          <h4 class="list-group-item-heading"><a href="/linux/2017/02/21/ssh-remote-file.html">[SSH] Mount remote directory using SSH</a></h4>
+			var animationCallbacks = [];
+			function animate(time) {
+				animationCallbacks.forEach(callback => callback(time));
+				requestAnimationFrame(animate);
+			}
+			requestAnimationFrame(animate);
 
-          <p class="list-group-item-text">Sử dụng SSh để mount thư mục từ máy remote Đôi khi chúng ta cần chỉnh sửa những file cấu...</p>
-        </div>
-      </div>
-      <div class="list-group-separator"></div>
-      
-      <div class="list-group-item">
-        <div class="row-action-primary">
-          <i class="fa fa-sticky-note"></i>
-        </div>
-        <div class="row-content">
-          <div class="least-content">25 Dec 2016</div>
-          <h4 class="list-group-item-heading"><a href="/android/2016/12/25/android-debug-over-wifi.html">[Android] Debug ứng dụng android qua Wifi</a></h4>
+			function adjustCanvasDimensions() {
+				var scale = window.devicePixelRatio || 1;
+				var width = window.innerWidth;
+				var height = window.innerHeight;
+				canvas.width = width * scale;
+				canvas.height = height * scale;
+				canvas.style.width = width + "px";
+				canvas.style.height = height + "px";
+			}
+			animationCallbacks.push(adjustCanvasDimensions);
+			adjustCanvasDimensions();
 
-          <p class="list-group-item-text">Debug ứng dụng android qua Wifi Nhiều khi việc debug ứng dụng android mà phải cắm thông qua dây cáp...</p>
-        </div>
-      </div>
-      <div class="list-group-separator"></div>
-      
-      <div class="list-group-item">
-        <div class="row-action-primary">
-          <i class="fa fa-sticky-note"></i>
-        </div>
-        <div class="row-content">
-          <div class="least-content">20 Dec 2016</div>
-          <h4 class="list-group-item-heading"><a href="/libgdx/2016/12/20/Libgdx-khoi-tao-moi-truong.html">[LIBGDX][Chapter 1] Thiết lập môi trường làm việc Libgdx</a></h4>
+			setStatusMode = function setStatusMode(mode) {
 
-          <p class="list-group-item-text">Chapter 1: Thiết lập môi trường làm việc Libgdx Thật may mắn vì libgdx là open source và đa nền...</p>
-        </div>
-      </div>
-      <div class="list-group-separator"></div>
-      
-      <div class="list-group-item">
-        <div class="row-action-primary">
-          <i class="fa fa-sticky-note"></i>
-        </div>
-        <div class="row-content">
-          <div class="least-content">05 Dec 2016</div>
-          <h4 class="list-group-item-heading"><a href="/libgdx/2016/12/05/LIBGDX-tutorials.html">[LIBGDX] Lập trình game với LIBGDX</a></h4>
+				if (statusMode === mode || !initializing)
+					return;
+				[statusProgress, statusIndeterminate, statusNotice].forEach(elem => {
+					elem.style.display = 'none';
+				});
+				animationCallbacks = animationCallbacks.filter(function(value) {
+					return (value != animateStatusIndeterminate);
+				});
+				switch (mode) {
+					case 'progress':
+						statusProgress.style.display = 'block';
+						break;
+					case 'indeterminate':
+						statusIndeterminate.style.display = 'block';
+						animationCallbacks.push(animateStatusIndeterminate);
+						break;
+					case 'notice':
+						statusNotice.style.display = 'block';
+						break;
+					case 'hidden':
+						break;
+					default:
+						throw new Error('Invalid status mode');
+				}
+				statusMode = mode;
+			}
 
-          <p class="list-group-item-text">Học lập trình game đa nền tảng với LibGDX platform Giới thiệu Tôi tên là Luyện (Trần Minh). Sở thích...</p>
-        </div>
-      </div>
-      <div class="list-group-separator"></div>
-      
-      <div class="list-group-item">
-        <div class="row-action-primary">
-          <i class="fa fa-sticky-note"></i>
-        </div>
-        <div class="row-content">
-          <div class="least-content">03 Oct 2016</div>
-          <h4 class="list-group-item-heading"><a href="/git/2016/10/03/git-create-patch-files.html">[GIT] Sử dụng git tạo patch file</a></h4>
+			function animateStatusIndeterminate(ms) {
 
-          <p class="list-group-item-text">Sử dụng git tạo patch file Trong quá trình làm việc chung trên một source code chúng ta phải thường...</p>
-        </div>
-      </div>
-      <div class="list-group-separator"></div>
-      
-      <div class="list-group-item">
-        <div class="row-action-primary">
-          <i class="fa fa-sticky-note"></i>
-        </div>
-        <div class="row-content">
-          <div class="least-content">10 Sep 2016</div>
-          <h4 class="list-group-item-heading"><a href="/android/2016/09/10/webtruyen-android.html">[App] Ứng dụng đọc truyện trên android miễn phí, không quảng cáo</a></h4>
+				var i = Math.floor(ms / INDETERMINATE_STATUS_STEP_MS % 8);
+				if (statusIndeterminate.children[i].style.borderTopColor == '') {
+					Array.prototype.slice.call(statusIndeterminate.children).forEach(child => {
+						child.style.borderTopColor = '';
+					});
+					statusIndeterminate.children[i].style.borderTopColor = '#dfdfdf';
+				}
+			}
 
-          <p class="list-group-item-text">Ứng dụng đọc truyện trên android Đây là ứng dụng đọc truyện chữ dành cho điện thoại android. Mình đã...</p>
-        </div>
-      </div>
-      <div class="list-group-separator"></div>
-      
-    </div>
-   
+			setStatusNotice = function setStatusNotice(text) {
 
-    <!-- Pagination links -->
-    
-</div><!-- end #home -->
+				while (statusNotice.lastChild) {
+					statusNotice.removeChild(statusNotice.lastChild);
+				}
+				var lines = text.split('\n');
+				lines.forEach((line) => {
+					statusNotice.appendChild(document.createTextNode(line));
+					statusNotice.appendChild(document.createElement('br'));
+				});
+			};
 
-          <div class="row">
-            <div class="col-md-12 col-xs-12 footer">
-              <footer>
-  © 2016 Trần Minh Luyện
-<div align="center">
- 
-</div>
-</footer>
+			engine.setProgressFunc((current, total) => {
 
-            </div>
-          </div>
-        </div> <!-- end /.col-md-9 -->
-      </div> <!-- end /.row -->
-    </div>
+				if (total > 0) {
+					statusProgressInner.style.width = current/total * 100 + '%';
+					setStatusMode('progress');
+					if (current === total) {
+						// wait for progress bar animation
+						setTimeout(() => {
+							setStatusMode('indeterminate');
+						}, 500);
+					}
+				} else {
+					setStatusMode('indeterminate');
+				}
+			});
 
-    
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script src="/static/js/thickbox-compressed.js"></script>
-<script src="/static/js/material.min.js"></script>
-<script src="/static/js/main.js"></script>
-<script src="/static/js/projects.js"></script>
+			function displayFailureNotice(err) {
+				var msg = err.message || err;
+				console.error(msg);
+				setStatusNotice(msg);
+				setStatusMode('notice');
+				initializing = false;
+			};
 
-    <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-98180508-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-  </body>
+			if (!Engine.isWebGLAvailable()) {
+				displayFailureNotice('WebGL not available');
+			} else {
+				setStatusMode('indeterminate');
+				engine.setCanvas(canvas);
+				engine.startGame(EXECUTABLE_NAME, MAIN_PACK).then(() => {
+					setStatusMode('hidden');
+					initializing = false;
+				}, displayFailureNotice);
+			}
+		})();
+	//]]></script>
+</body>
 </html>
+
