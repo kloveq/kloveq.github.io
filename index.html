@@ -1,267 +1,1959 @@
 <!DOCTYPE html>
-<html xmlns='http://www.w3.org/1999/xhtml' lang='' xml:lang=''>
+<html lang="en">
+
 <head>
-	<meta charset='utf-8' />
-	<meta name='viewport' content='width=device-width, user-scalable=no' />
-	<title></title>
-	<style type='text/css'>
+	<title>
+		Pham Khai | Games
+	</title>
+	<meta name="description"
+		content="Connect with this designer on Dribbble, the best place for to designers gain inspiration, feedback, community, and jobs worldwide." />
+	<meta charset="utf-8" />
+	<meta name="theme-color" content="#333333">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+	<meta name="referrer" content="origin-when-cross-origin">
+	<!--[if gte IE 7]><!-->
+	<link rel="stylesheet" media="screen, projection"
+		href="https://cdn.dribbble.com/assets/dribbble-1-0/master-73bbc60fdba6f2521247a6631a92b7f0ff83bea1b2105556f871d6ca0756d951.css" />
+	<link rel="stylesheet" media="screen, projection"
+		href="https://cdn.dribbble.com/assets/dribbble-1-0/infinite-50e36a45625f3fbb94c071f9ac2a38d955add68209612686fe5de7b2dcbe4191.css" />
+	<link rel="preload"
+		href="https://cdn.dribbble.com/assets/dribbble-1-0/attachment-overlay-7e9f0d105045800cc4063dcac3a315f2ba27426a4c9bbdcc7ca3f9c38cc3b787.css"
+		as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript>
+		<link rel="stylesheet"
+			href="https://cdn.dribbble.com/assets/dribbble-1-0/attachment-overlay-7e9f0d105045800cc4063dcac3a315f2ba27426a4c9bbdcc7ca3f9c38cc3b787.css">
+		</noscript>
 
-		body {
-			touch-action: none;
-			margin: 0;
-			border: 0 none;
-			padding: 0;
-			text-align: center;
-			background-color: black;
+	<link rel="preload"
+		href="https://cdn.dribbble.com/assets/dribbble-1-0/master_async-06900d14dfe4098d96b4908d02158097acd5def9883df2b7d7006db1e2dfe47b.css"
+		as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript>
+		<link rel="stylesheet"
+			href="https://cdn.dribbble.com/assets/dribbble-1-0/master_async-06900d14dfe4098d96b4908d02158097acd5def9883df2b7d7006db1e2dfe47b.css">
+		</noscript>
+
+	<!-- <![endif]-->
+	<link
+		href="https://cdn.dribbble.com/assets/dribbble-vector-ball-95ca193529993e9b3904f7adb541680aba196642f557cfaf3cdbb0a48a284be4.svg"
+		rel="mask-icon" color="#ea4c89" />
+	<link
+		href="https://cdn.dribbble.com/assets/apple-touch-icon-precomposed-4a188d3f4dd693b67971fda843fd4bdeae751f9a245e3b878cae17e0a9d6a0a3.png"
+		rel="apple-touch-icon-precomposed" />
+	<link
+		href="https://cdn.dribbble.com/assets/favicon-63b2904a073c89b52b19aa08cebc16a154bcf83fee8ecc6439968b1e6db569c7.ico"
+		rel="icon" />
+	<link
+		href="https://cdn.dribbble.com/assets/dribbble-ball-192-ec064e49e6f63d9a5fa911518781bee0c90688d052a038f8876ef0824f65eaf2.png"
+		sizes="192x192" rel="icon" />
+
+
+	<meta name="csrf-param" content="authenticity_token" />
+	<meta name="csrf-token"
+		content="KBLKXx/rLpR8jIE2bLUPLVr02LtsCcm5FBup3+HBqEmpQQ5lW110X23VqcN8Ay+m9kzgVihCkb7e2Kwe1v5IRg==" />
+	<script src="https://m.servedby-buysellads.com/monetization.custom.js"></script>
+	<meta property="og:type" content="profile" />
+	<meta property="og:image" content="https://cdn.dribbble.com/users/73551/screenshots/8809294/making_magic_4x.jpg" />
+	<meta property="og:image:secure_url"
+		content="https://cdn.dribbble.com/users/73551/screenshots/8809294/making_magic_4x.jpg" />
+	<meta property="og:image:alt" content="Dribbble shot titled &quot;Make yr own magic&quot; by Jane Song" />
+	<meta property="og:image:width" content="1600" />
+	<meta property="og:image:height" content="1200" />
+	<meta name="twitter:image" content="https://cdn.dribbble.com/users/73551/screenshots/8809294/making_magic_4x.jpg" />
+	<meta name="twitter:image:alt" content="Dribbble shot titled &quot;Make yr own magic&quot; by Jane Song" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:label1" content="Dribbbled by" />
+	<meta name="twitter:data1" content="@janemsong" />
+
+
+	<meta name="apple-itunes-app" content="app-id=1228326440, app-argument=https://dribbble.com/janemsong">
+
+	<meta property="fb:app_id" content="811749452338490">
+
+	<script>
+		if (location.hash.match(/^#\./) && window.history) {
+			window.history.replaceState({}, window.title, location.origin + location.pathname + location.search)
 		}
-
-		#canvas {
-			display: block;
-			margin: 0;
-			color: white;
-		}
-
-		#canvas:focus {
-			outline: none;
-		}
-
-		.godot {
-			font-family: 'Noto Sans', 'Droid Sans', Arial, sans-serif;
-			color: #e0e0e0;
-			background-color: #3b3943;
-			background-image: linear-gradient(to bottom, #403e48, #35333c);
-			border: 1px solid #45434e;
-			box-shadow: 0 0 1px 1px #2f2d35;
-		}
-
-
-		/* Status display
-		 * ============== */
-
-		#status {
-			position: absolute;
-			left: 0;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			/* don't consume click events - make children visible explicitly */
-			visibility: hidden;
-		}
-
-		#status-progress {
-			width: 366px;
-			height: 7px;
-			background-color: #38363A;
-			border: 1px solid #444246;
-			padding: 1px;
-			box-shadow: 0 0 2px 1px #1B1C22;
-			border-radius: 2px;
-			visibility: visible;
-		}
-
-		@media only screen and (orientation:portrait) {
-			#status-progress {
-				width: 61.8%;
+	</script>
+	<noscript>
+		<style>
+			ol.dribbbles {
+				display: block !important
 			}
-		}
+		</style>
+	</noscript>
+	<meta name="segment-controller" content="users" />
+	<meta name="segment-action" content="show" />
 
-		#status-progress-inner {
-			height: 100%;
-			width: 0;
-			box-sizing: border-box;
-			transition: width 0.5s linear;
-			background-color: #202020;
-			border: 1px solid #222223;
-			box-shadow: 0 0 1px 1px #27282E;
-			border-radius: 3px;
-		}
-
-		#status-indeterminate {
-			visibility: visible;
-			position: relative;
-		}
-
-		#status-indeterminate > div {
-			width: 4.5px;
-			height: 0;
-			border-style: solid;
-			border-width: 9px 3px 0 3px;
-			border-color: #2b2b2b transparent transparent transparent;
-			transform-origin: center 21px;
-			position: absolute;
-		}
-
-		#status-indeterminate > div:nth-child(1) { transform: rotate( 22.5deg); }
-		#status-indeterminate > div:nth-child(2) { transform: rotate( 67.5deg); }
-		#status-indeterminate > div:nth-child(3) { transform: rotate(112.5deg); }
-		#status-indeterminate > div:nth-child(4) { transform: rotate(157.5deg); }
-		#status-indeterminate > div:nth-child(5) { transform: rotate(202.5deg); }
-		#status-indeterminate > div:nth-child(6) { transform: rotate(247.5deg); }
-		#status-indeterminate > div:nth-child(7) { transform: rotate(292.5deg); }
-		#status-indeterminate > div:nth-child(8) { transform: rotate(337.5deg); }
-
-		#status-notice {
-			margin: 0 100px;
-			line-height: 1.3;
-			visibility: visible;
-			padding: 4px 6px;
-			visibility: visible;
-		}
-	</style>
 
 </head>
-<body>
-	<canvas id='canvas'>
-		HTML5 canvas appears to be unsupported in the current browser.<br />
-		Please try updating or use a different browser.
-	</canvas>
-	<div id='status'>
-		<div id='status-progress' style='display: none;' oncontextmenu='event.preventDefault();'><div id ='status-progress-inner'></div></div>
-		<div id='status-indeterminate' style='display: none;' oncontextmenu='event.preventDefault();'>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-		</div>
-		<div id='status-notice' class='godot' style='display: none;'></div>
+
+<body id="profile" class="logged-out not-pro not-player not-self not-team not-on-team  grid-large grid-without-meta ">
+
+
+	<!-- <div id="header" role="banner" class="nav-wrapper">
+
+  <div id="header-inner" class="group nav-inner">
+
+    <div id="logo" class="nav-logo">
+      <a href="/"><img alt="dribbble" src="https://cdn.dribbble.com/assets/logo-bw-0200c7483844c355752e89efaa4ba89b83c9c591d70254ba10f4b25d901359d0.gif" /></a>
+    </div>
+
+    <a href="#nav" id="toggle-nav" class="toggle-nav" aria-label="Toggle Navigation">
+      <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24" role="img" class="icon nav-icon"><path d="m4 7h16c1.1 0 2-.9 2-2s-.9-2-2-2h-16c-1.1 0-2 .9-2 2s.9 2 2 2zm16 10h-16c-1.1 0-2 .9-2 2s.9 2 2 2h16c1.1 0 2-.9 2-2s-.9-2-2-2zm0-7h-16c-1.1 0-2 .9-2 2s.9 2 2 2h16c1.1 0 2-.9 2-2s-.9-2-2-2z"></path></svg>
+
+      <span class="close">×</span>
+    </a>
+
+    <ul id="nav" class="main-nav" role="navigation">
+
+        <li id="t-signup" class="tab-signup" data-top-level="signup">
+          <a class="primary-btn" data-signup-trigger="true" data-href="/signup/new" data-context="top-nav" href="">
+             <span>Sign up</span>
+</a>        </li>
+        <li id="t-signin" class="tab-signin" data-top-level="signin">
+          <a href="/session/new?return_to=%2Fjanemsong">
+            <span>Sign in</span>
+</a>        </li>
+
+
+      <li class="nav-dropdown-item" data-top-level="explore">
+        <a class="has-sub" href="#">
+          Explore
+          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none" role="img" class="icon caret">
+<path d="M1 1L5.07223 5.1517L9.23083 1" stroke="black"></path>
+</svg>
+
+</a>          <div class="nav-dropdown wide responsive">
+  <ul>
+    <li class="mega-nav-box">
+      <a href="/shots">
+        <div class="nav-quad-layout mega-nav-popular-shots">
+            <img class="image-shadow" src="https://cdn.dribbble.com/users/257709/screenshots/9390500/dashboard_csgo_game_skins_ui_ux.png?compress=1&amp;resize=140x105" alt="Dashboard csgo game skins ui ux" />
+            <img class="image-shadow" src="https://cdn.dribbble.com/users/532338/screenshots/9383396/2019_wrapped_nathan_holthus.png?compress=1&amp;resize=140x105" alt="2019 wrapped nathan holthus" />
+            <img class="image-shadow" src="https://cdn.dribbble.com/users/1615730/screenshots/9338617/new.png?compress=1&amp;resize=140x105" alt="New" />
+            <img class="image-shadow" src="https://cdn.dribbble.com/users/1211065/screenshots/9388176/black.png?compress=1&amp;resize=140x105" alt="Black" />
+        </div>
+        <div class="mega-nav-copy">
+          <div class="title">Shots</div>
+          <span>Get inspired with designs shared by our talented community</span>
+        </div>
+</a>    </li>
+
+    <li class="mega-nav-box">
+      <a href="/designers">
+        <img class="image-shadow" src="/assets/updated_navigation/top-designers-cbc697fdfc15f9c29e5a63f480d3e65d773b73ba8968412dc6e4b21ff84f0175.png" alt="Top designers" />
+        <div class="mega-nav-copy">
+          <div class="title">Top Designers</div>
+          <span>Check out the rankings and see which designers are trending</span>
+        </div>
+</a>    </li>
+
+    <li class="mega-nav-box">
+      <a href="/stories">
+        <div class="nav-tri-layout mega-nav-blog-posts">
+            <img class="image-shadow" src="https://cdn.dribbble.com/users/96579/screenshots/6211064/general_style_color_copy_5.png?compress=1&amp;resize=200x150" alt="General style color copy 5" />
+            <img class="image-shadow" src="https://cdn.dribbble.com/uploads/5492/original/a838b3dea58da26959088a61539b6188.png?1578070486&amp;compress=1&amp;resize=200x150" alt="A838b3dea58da26959088a61539b6188" />
+            <img class="image-shadow" src="https://cdn.dribbble.com/users/1578056/screenshots/7918578/twitterredesign1.png?compress=1&amp;resize=200x150" alt="Twitterredesign1" />
+        </div>
+        <div class="mega-nav-copy">
+          <div class="title">Blog</div>
+          <span>Amazing interviews with design industry leaders, tutorials, and more</span>
+        </div>
+</a>    </li>
+
+      <li class="mega-nav-box mega-nav-weekly-playoff">
+        <a href="/shots/9329292-Design-a-Typographic-Quote-Showcasing-Your-New-Year-s-Resolution">
+          <img class="image-shadow" src="https://cdn.dribbble.com/users/39/screenshots/9329292/wwu_18.png?compress=1&amp;resize=280x210" alt="Wwu 18" />
+          <div class="mega-nav-copy">
+            <div class="title">Weekly Warmup</div>
+            <span>Join the fun and flex your design skills with our weekly prompt</span>
+          </div>
+</a>      </li>
+
+      <li class="mega-nav-box">
+        <a href="/shots?list=playoffs">
+          <div class="nav-tri-layout mega-nav-featured-playoffs">
+              <img class="image-shadow" src="https://cdn.dribbble.com/users/2254924/screenshots/6283328/adobexd-fonts-project-dribbble-movie.png?compress=1&amp;resize=200x150" alt="Adobexd fonts project dribbble movie" />
+              <img class="image-shadow" src="https://cdn.dribbble.com/users/1960589/screenshots/6628207/animacja_fragment_1.png?compress=1&amp;resize=200x150" alt="Animacja fragment 1" />
+              <img class="image-shadow" src="https://cdn.dribbble.com/users/2254924/screenshots/6764060/final_post_dribbble_xd_undraw.png?compress=1&amp;resize=200x150" alt="Final post dribbble xd undraw" />
+          </div>
+
+          <div class="mega-nav-copy">
+            <div class="title">Playoffs</div>
+            <span>See Shots that other designers are riffing on & participate yourself</span>
+          </div>
+</a>      </li>
+
+    <li class="mega-nav-box nav-extras">
+      <ul>
+        <li><a href="/teams">Teams</a></li>
+        <li><a href="/goods">Goods for Sale</a></li>
+        <li><a href="/meetups">Meetups</a></li>
+        <hr/>
+        <li><a href="https://shop.dribbble.com/">Dribbble Shop</a></li>
+        <li><a text="About Dribbble" href="/about">About Dribbble</a></li>
+        <li><a href="/advertise">Advertise</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+      </li>
+
+      <li class="nav-dropdown-item" data-top-level="designers">
+        <a class="has-sub" href="#">
+          For Designers
+          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none" role="img" class="icon caret">
+<path d="M1 1L5.07223 5.1517L9.23083 1" stroke="black"></path>
+</svg>
+
+</a>        <div class="nav-dropdown">
+  <ul>
+    <li class="mega-nav-box">
+      <a href="/jobs">
+        <img src="https://cdn.dribbble.com/assets/updated_navigation/job-board-3625324c15e3361d86616f77704785852e3974498067687220e19b4ac545cd18.png" alt="Job board" />
+        <div class="mega-nav-copy">
+          <div class="title">Job Board</div>
+          <span>Find your dream design job on Dribbble</span>
+        </div>
+</a>    </li>
+
+      <li class="mega-nav-box">
+        <a href="/jobs/projects">
+          <img src="https://cdn.dribbble.com/assets/updated_navigation/dribbble-projects-48ed961934fc578411ec8c9e5a4ad0c17ccbb4fbabf01992770c99014b0dd55c.png" alt="Dribbble projects" />
+          <div class="mega-nav-copy">
+            <div class="title">Pro Projects</div>
+            <span>An exclusive resource for contract work</span>
+          </div>
+</a>      </li>
+
+    <li class="mega-nav-box">
+        <a href="/pro">
+          <img src="https://cdn.dribbble.com/assets/updated_navigation/dribbble-pro-f0793cde95788865b8b497035f1bc4152fb161b53d98e58043cee269ead9844b.png" alt="Dribbble pro" />
+          <div class="mega-nav-copy">
+              <div class="title">Go Pro</div>
+              <span>Take your career to the next level</span>
+          </div>
+</a>    </li>
+  </ul>
+</div>
+
+      </li>
+
+
+        <li id="t-hiring" class="tab-hiring" data-top-level="hiring">
+          <a class="left-outlined" href="/hiring">
+            <span>Hiring Designers?</span>
+</a>        </li>
+
+
+      <li id="t-search" class="tab-search" role="search">
+        <form id="search" class="js-nav-search-form has-animation nav-search-wrapper " action="https://dribbble.com/search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" role="img" class="icon js-toggle-nav-search">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M17.9274 9.96369C17.9274 14.3619 14.3619 17.9274 9.96369 17.9274C5.56546 17.9274 2 14.3619 2 9.96369C2 5.56546 5.56546 2 9.96369 2C14.3619 2 17.9274 5.56546 17.9274 9.96369ZM15.8427 18.0089C14.1948 19.2152 12.1624 19.9274 9.96369 19.9274C4.46089 19.9274 0 15.4665 0 9.96369C0 4.46089 4.46089 0 9.96369 0C15.4665 0 19.9274 4.46089 19.9274 9.96369C19.9274 12.1901 19.1972 14.2459 17.9631 15.9047C17.997 15.9331 18.0298 15.9631 18.0616 15.9949L22.9403 20.8736C23.5261 21.4594 23.5261 22.4092 22.9403 22.9949C22.3545 23.5807 21.4048 23.5807 20.819 22.9949L15.9403 18.1163C15.9057 18.0817 15.8732 18.0459 15.8427 18.0089Z"></path>
+</svg>
+
+          <input class="nav-search-text" type="search" name="q" placeholder="Search " value="" />
+          
+        </form>
+      </li>
+    </ul>
+
+    <div id="mobile-nav" class="mobile-nav">
+
+      <form class="mobile-nav-search nav-search-wrapper" action="https://dribbble.com/search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" role="img" class="icon ">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M17.9274 9.96369C17.9274 14.3619 14.3619 17.9274 9.96369 17.9274C5.56546 17.9274 2 14.3619 2 9.96369C2 5.56546 5.56546 2 9.96369 2C14.3619 2 17.9274 5.56546 17.9274 9.96369ZM15.8427 18.0089C14.1948 19.2152 12.1624 19.9274 9.96369 19.9274C4.46089 19.9274 0 15.4665 0 9.96369C0 4.46089 4.46089 0 9.96369 0C15.4665 0 19.9274 4.46089 19.9274 9.96369C19.9274 12.1901 19.1972 14.2459 17.9631 15.9047C17.997 15.9331 18.0298 15.9631 18.0616 15.9949L22.9403 20.8736C23.5261 21.4594 23.5261 22.4092 22.9403 22.9949C22.3545 23.5807 21.4048 23.5807 20.819 22.9949L15.9403 18.1163C15.9057 18.0817 15.8732 18.0459 15.8427 18.0089Z"></path>
+</svg>
+
+        <input class="nav-search-text" type="search" name="q" placeholder="Search " value="" />
+        
+      </form>
+
+      <ul class="mobile-nav-main">
+        <li>
+          <a href="#" class="toggle-mobile-nav-dropdown" data-sub-nav="explore">
+            Explore
+            <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24" role="img" class="icon caret-down"><path d="m4.585 10.468 7.415 7.532 7.415-7.532c.779-.792.779-2.081 0-2.873s-2.049-.792-2.829 0l-4.586 4.659-4.587-4.659c-.378-.384-.88-.595-1.414-.595s-1.036.211-1.414.595c-.78.792-.78 2.082 0 2.873z"></path></svg>
+
+          </a>
+          <ul class="js-mobile-nav-explore mobile-dropdown-nav">
+            <li><a href="/shots">Shots</a></li>
+            <li><a href="/designers">Top Designers</a></li>
+            <li><a href="/stories">Blog</a></li>
+              <li><a href="https://dribbble.com/shots/9329292">Weekly Warm-up</a></li>
+              <li><a href="/shots?list=playoffs">Playoffs</a></li>
+            <li>
+              <a href="#" class="toggle-mobile-nav-dropdown js-toggle-explore-sub-nav" data-sub-nav="sub-explore">
+                More
+                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24" role="img" class="icon caret-down"><path d="m4.585 10.468 7.415 7.532 7.415-7.532c.779-.792.779-2.081 0-2.873s-2.049-.792-2.829 0l-4.586 4.659-4.587-4.659c-.378-.384-.88-.595-1.414-.595s-1.036.211-1.414.595c-.78.792-.78 2.082 0 2.873z"></path></svg>
+
+              </a>
+              <ul class="js-mobile-nav-sub-explore mobile-dropdown-nav">
+                <li><a href="/teams">Teams</a></li>
+                <li><a href="/goods">Goods for Sale</a></li>
+                <li><a href="/meetups">Meetups</a></li>
+                <li><a href="https://shop.dribbble.com/">Dribbble Shop</a></li>
+                <li><a text="About Dribbble" href="/about">About Dribbble</a></li>
+                <li><a href="/advertise">Advertise</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#" class="toggle-mobile-nav-dropdown"  data-sub-nav="designers">
+            For Designers
+            <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24" role="img" class="icon caret-down"><path d="m4.585 10.468 7.415 7.532 7.415-7.532c.779-.792.779-2.081 0-2.873s-2.049-.792-2.829 0l-4.586 4.659-4.587-4.659c-.378-.384-.88-.595-1.414-.595s-1.036.211-1.414.595c-.78.792-.78 2.082 0 2.873z"></path></svg>
+
+          </a>
+          <ul class="js-mobile-nav-designers mobile-dropdown-nav">
+            <li><a href="/jobs">Job Board</a></li>
+              <li><a href="/jobs/projects">Pro Projects</a></li>
+              <li>
+                <a href="/pro">
+                    Go Pro
+</a>              </li>
+          </ul>
+        </li>
+
+          <li>
+            <a href="/hiring">Hiring Designers?</a>
+          </li>
+
+      </ul>
+
+    </div>
+  </div>
+</div> -->
+
+
+	<div class="ajax notice hide">
+		<h2></h2>
 	</div>
 
-	<script type='text/javascript' src='index.js'></script>
-	<script type='text/javascript'>//<![CDATA[
 
-		var engine = new Engine;
-		var setStatusMode;
-		var setStatusNotice;
 
-		(function() {
 
-			const EXECUTABLE_NAME = 'index';
-			const MAIN_PACK = 'index.pck';
-			const INDETERMINATE_STATUS_STEP_MS = 100;
+	<!-- <div id="wrap">
+  
+    
 
-			var canvas = document.getElementById('canvas');
-			var statusProgress = document.getElementById('status-progress');
-			var statusProgressInner = document.getElementById('status-progress-inner');
-			var statusIndeterminate = document.getElementById('status-indeterminate');
-			var statusNotice = document.getElementById('status-notice');
+<div class="full-tabs">
+  <ul class="full-tabs-links">
+  <li class="shots">
 
-			var initializing = true;
-			var statusMode = 'hidden';
 
-			var animationCallbacks = [];
-			function animate(time) {
-				animationCallbacks.forEach(callback => callback(time));
-				requestAnimationFrame(animate);
-			}
-			requestAnimationFrame(animate);
+    <a href="/janemsong">    <span class="label">Shots</span>
+    <span class="count">54</span>
+</a>
+</li>
 
-			function adjustCanvasDimensions() {
-				var scale = window.devicePixelRatio || 1;
-				var width = window.innerWidth;
-				var height = window.innerHeight;
-				canvas.width = width * scale;
-				canvas.height = height * scale;
-				canvas.style.width = width + "px";
-				canvas.style.height = height + "px";
-			}
-			animationCallbacks.push(adjustCanvasDimensions);
-			adjustCanvasDimensions();
 
-			setStatusMode = function setStatusMode(mode) {
+  
 
-				if (statusMode === mode || !initializing)
-					return;
-				[statusProgress, statusIndeterminate, statusNotice].forEach(elem => {
-					elem.style.display = 'none';
-				});
-				animationCallbacks = animationCallbacks.filter(function(value) {
-					return (value != animateStatusIndeterminate);
-				});
-				switch (mode) {
-					case 'progress':
-						statusProgress.style.display = 'block';
-						break;
-					case 'indeterminate':
-						statusIndeterminate.style.display = 'block';
-						animationCallbacks.push(animateStatusIndeterminate);
-						break;
-					case 'notice':
-						statusNotice.style.display = 'block';
-						break;
-					case 'hidden':
-						break;
-					default:
-						throw new Error('Invalid status mode');
-				}
-				statusMode = mode;
-			}
+  <li class="followers">
 
-			function animateStatusIndeterminate(ms) {
 
-				var i = Math.floor(ms / INDETERMINATE_STATUS_STEP_MS % 8);
-				if (statusIndeterminate.children[i].style.borderTopColor == '') {
-					Array.prototype.slice.call(statusIndeterminate.children).forEach(child => {
-						child.style.borderTopColor = '';
-					});
-					statusIndeterminate.children[i].style.borderTopColor = '#dfdfdf';
-				}
-			}
+    <a href="/janemsong/followers">    <span class="label">Followers</span>
+    <span class="count">2,164</span>
+</a>
+</li>
 
-			setStatusNotice = function setStatusNotice(text) {
 
-				while (statusNotice.lastChild) {
-					statusNotice.removeChild(statusNotice.lastChild);
-				}
-				var lines = text.split('\n');
-				lines.forEach((line) => {
-					statusNotice.appendChild(document.createTextNode(line));
-					statusNotice.appendChild(document.createElement('br'));
-				});
-			};
 
-			engine.setProgressFunc((current, total) => {
 
-				if (total > 0) {
-					statusProgressInner.style.width = current/total * 100 + '%';
-					setStatusMode('progress');
-					if (current === total) {
-						// wait for progress bar animation
-						setTimeout(() => {
-							setStatusMode('indeterminate');
-						}, 500);
+
+
+  <li class="more">
+    <a href="#">
+      <span class="label">More</span>
+    </a>
+    <ul class="sub">
+      
+
+  <li class="followers">
+
+
+    <a href="/janemsong/followers">    <span class="label">Followers</span>
+    <span class="count">2,164</span>
+</a>
+</li>
+
+
+
+
+
+
+      
+
+      
+
+      
+
+      <li class="likes">
+
+
+    <a href="/janemsong/likes">    <span class="label">Likes</span>
+    <span class="count">1,871</span>
+</a>
+</li>
+
+
+      <li class="tags">
+
+
+    <a href="/janemsong/tags">    <span class="label">Tags</span>
+    <span class="count">188</span>
+</a>
+</li>
+
+    </ul>
+  </li>
+</ul>
+
+
+  <form class="select-sort-form" action="/janemsong" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />    <select name="stream" id="stream"><option selected="selected" value="recent">Recent Shots</option>
+<option value="popular">Popular Shots</option></select>
+</form>
+    <div class="screenshot-actions">
+      <div class="actions-menu">
+  <a class="form-btn grid" href="#">
+    <span>Actions</span>
+</a>  <ul class="actions-list">
+      <li class="shot-display">
+    <h3>Display Options</h3>
+    <ul class="large-small">
+          <li rel="tipsy" data-tipsy-class="tipsy-alt" title="Small with info" class="small-with-meta ">
+            <a href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" width="72" height="72" viewBox="0 0 72 72" role="img" class="icon ">
+  <path d="M49 53L23 53C21 53 20 52 20 50L20 22C20 20 21 19 23 19L49 19C51 19 52 20 52 22L52 50C52 52 51 53 49 53L49 53 49 53ZM28 48L44 48C45 48 46 47 46 46 46 45 45 44 44 44L28 44C27 44 26 45 26 46 26 47 27 48 28 48L28 48 28 48ZM46 25L26 25 26 39 46 39 46 25 46 25Z" fill="#333333"></path>
+</svg>
+
+            </a>
+          </li>
+          <li rel="tipsy" data-tipsy-class="tipsy-alt" title="Large with info" class="large-with-meta ">
+            <a href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" width="72" height="72" viewBox="0 0 72 72" role="img" class="icon ">
+  <path d="M57 61L15 61C13 61 12 60 12 58L12 14C12 12 13 11 15 11L57 11C59 11 60 12 60 14L60 58C60 60 59 61 57 61L57 61ZM20 56L52 56C53 56 54 55 54 54 54 53 53 52 52 52L20 52C19 52 18 53 18 54 18 55 19 56 20 56L20 56ZM54 17L18 17 18 47 54 47 54 17 54 17Z" fill="#333333"></path>
+</svg>
+
+            </a>
+          </li>
+          <li rel="tipsy" data-tipsy-class="tipsy-alt" title="Small without info" class="small-without-meta ">
+            <a href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" width="72" height="72" viewBox="0 0 72 72" role="img" class="icon ">
+  <path d="M49 49L23 49C21 49 20 48 20 46L20 26C20 24 21 23 23 23L49 23C51 23 52 24 52 26L52 46C52 48 51 49 49 49L49 49ZM46 29L26 29 26 43 46 43 46 29 46 29Z" fill="#333333"></path>
+</svg>
+
+            </a>
+          </li>
+          <li rel="tipsy" data-tipsy-class="tipsy-alt" title="Large without info" class="large-without-meta active">
+            <a href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" width="72" height="72" viewBox="0 0 72 72" role="img" class="icon ">
+  <path d="M57 57L15 57C13 57 12 56 12 54L12 18C12 16 13 15 15 15L57 15C59 15 60 16 60 18L60 54C60 56 59 57 57 57L57 57ZM54 21L18 21 18 51 54 51 54 21 54 21Z" fill="#333333"></path>
+</svg>
+
+            </a>
+          </li>
+    </ul>
+  </li>
+
+  </ul>
+</div>
+
+    </div>
+</div>
+
+
+  
+
+  <div id="wrap-inner">
+    <div id="content" role="main">
+      <div class="notice-alert">
+        <h3><!-- message goes here -->
+	</h3>
+	<a href="#" class="close" aria-label="close">
+		<img width="25" alt="close"
+			src="https://cdn.dribbble.com/assets/icon-shot-x-light-2x-a4fcd61bdb114023583740bd9f5a46734e243e5be2bff1baa3e1cc33e7877fcd.png" />
+	</a>
+	</div>
+
+
+
+	<div id="main" class="main-full floating-sidebar-container group ">
+
+
+		<div class="floating-sidebar profile-info ">
+			<div class="profile-info-mod profile-essentials">
+				<h1 class="vcard">
+					<a class="url" rel="contact" href="/">
+						<picture>
+							<source
+								srcset="https://cdn.dribbble.com/users/73551/avatars/normal/2227f8a0f2bad85fbd083b03653838c3.jpg?1452213905"
+								media="(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)">
+							<source
+								srcset="https://cdn.dribbble.com/users/73551/avatars/small/2227f8a0f2bad85fbd083b03653838c3.jpg?1452213905">
+							<!-- <img class="photo" alt="Jane Song"
+								src="https://cdn.dribbble.com/users/73551/avatars/small/2227f8a0f2bad85fbd083b03653838c3.jpg?1452213905" /> -->
+						</picture>
+						Khai Pham
+					</a>
+					<span class="location">
+						<span class="locality"><a href="/">Ha Noi - Viet Nam</a></span>
+					</span>
+				</h1>
+
+
+				<a class="badge-link" href="/pro">
+					<span class="badge badge-pro">Pro</span>
+
+				</a>
+
+				<div class="profile-actions">
+
+
+					<div class="follow-prompt">
+
+						<a class="form-btn tipsy-mobile-disabled light-btn follow " rel="tipsy" title="Follow Jane Song"
+							data-signup-trigger="" data-context="follow-user" href="/janemsong/followers">
+							<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
+								viewBox="0 0 24 24" role="img" class="icon ">
+								<path
+									d="m20 10h-6v-6c0-1.104-.896-2-2-2s-2 .896-2 2v6h-6c-1.104 0-2 .896-2 2s.896 2 2 2h6v6c0 1.104.896 2 2 2s2-.896 2-2v-6h6c1.104 0 2-.896 2-2s-.896-2-2-2z">
+								</path>
+							</svg>
+
+							<span>Follow</span>
+						</a> <a class="form-btn tipsy-mobile-disabled link-btn unfollow "
+							href="/janemsong/followers/janemsong">
+							<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
+								viewBox="0 0 24 24" role="img" class="icon ">
+								<path
+									d="m21.28 4.473c-.848-.721-2.109-.604-2.817.262l-8.849 10.835-4.504-3.064c-.918-.626-2.161-.372-2.773.566s-.364 2.205.555 2.83l7.494 5.098 11.151-13.653c.707-.866.592-2.152-.257-2.874z">
+								</path>
+							</svg>
+
+							<span>Following</span>
+						</a> <a class="form-btn tipsy-mobile-disabled light-btn unblock " data-hover="Unblock"
+							href="/blocks/janemsong">
+							<span>Blocked</span>
+						</a></div>
+				</div>
+
+				<a href="#" class="floating-sidebar-toggle">
+					<span>More</span>
+				</a>
+			</div>
+
+			<div class="floating-sidebar-float">
+
+
+				<div class="profile-info-mod">
+					<h3>About</h3>
+					<ul class="skills-list">
+						<li>
+							<a data-skill="illustration" href="/designers?skills=illustration">20-09-1991</a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="floating-sidebar-extra">
+
+				<div class="profile-info-mod">
+					<h3>Contact</h3>
+
+					<ul class="profile-details on-teams">
+						<!-- <li>
+							<a class="url" rel="contact" href="/Mailchimp"><img class="photo" alt="Mailchimp"
+									src="https://cdn.dribbble.com/users/337778/avatars/small/52806afbf31261f94da21be8eb1d5177.png?1538003456" />
+								Mailchimp</a>
+						</li> -->
+						<li>
+							<a class="url" rel="contact" href="https://www.facebook.com/trong1232009"><img class="photo" alt="Mailchimp"
+									src="https://cdn.dribbble.com/users/337778/avatars/small/52806afbf31261f94da21be8eb1d5177.png?1538003456" />
+								Facebook</a>
+						</li>
+					</ul>
+				</div>
+
+<!-- 
+				<div class="profile-info-mod">
+					<h3>Elsewhere</h3>
+
+					<ul class="profile-details">
+						<li>
+							<a class="elsewhere-website" rel="noreferrer nofollow" title="http://jane-song.com"
+								data-url="http://jane-song.com" href="https://www.facebook.com/trong1232009">
+								<img width="20"
+									src="https://cdn.dribbble.com/assets/profile/icon-elsewhere-website-241749d5da6c64b1e51b820ab5ebc0d52274ba1da0c34cff6077e208e6871ea0.png"
+									alt="Icon elsewhere website" />
+								<span class="label">Facebook</span>
+							</a></li>
+
+					</ul>
+				</div>
+ -->
+
+			</div>
+		</div>
+
+		<div class="floating-sidebar-content">
+
+
+
+			<ol class="dribbbles group">
+				<script>
+					if (!document.querySelector(".dribbbles.group")) {
+						window.location.reload();
 					}
-				} else {
-					setStatusMode('indeterminate');
-				}
+				</script>
+
+
+
+
+				<li id="screenshot-8809294" data-screenshot-id="8809294" class="group  ">
+					<div class="dribbble  ">
+
+						<div class="dribbble-shot with-actions">
+
+							<div class="dribbble-img ">
+								<a class="dribbble-link" href="/boom">
+									<picture>
+										<source
+											srcset="menupanel.jpg"
+											media="(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)">
+										<source
+											srcset="menupanel.jpg">
+										<img alt="Make yr own magic"
+											src="menupanel.jpg" />
+									</picture>
+								</a>
+								<a class="dribbble-over" href="/boom">
+									<strong>Boom Online</strong>
+									<span class="timestamp"></span>
+									<span class="comment">
+										<span class="text-light">—</span>
+										remake boom online
+									</span>
+								</a>
+							</div>
+
+
+							<div class="shot-display-options">
+								<ul class="tools group">
+									<li class="fav">
+										<span class="toggle-fav">63</span>
+									</li>
+									<li class="cmnt">
+										<span>
+											1
+										</span>
+									</li>
+									<li class="views">
+										<span>4,901</span>
+									</li>
+								</ul>
+
+								<div class="dribbble-shot-title-date">
+									<p class="shot-title">Boom Online</p>
+									<p class="timestamp">November 04, 2019</p>
+								</div>
+
+								<div class="extras">
+									<a href="/shots/8809294-Make-yr-own-magic/rebounds">
+										<span class="rebound-mark has-rebounds">
+											0
+										</span>
+									</a> <a href="/janemsong">
+										<span class="rebound-mark is-rebound">
+											<img width="16" height="16" alt="Rebound"
+												src="https://cdn.dribbble.com/assets/icon-rebound-2x-24fe8b574874f064bcab2a8e46e0694cc39641ebef3d176c2eb742f5f0c7c308.png" />
+										</span>
+									</a> <span class="attachments-mark">
+										<img width="16" height="16" alt="Attachments"
+											src="" />
+									</span>
+								</div>
+
+								<ul class="dribbble-shot-actions">
+									<li data-bucket-container="true">
+										<a class="bucket-shot form-btn outlined" title="Save shot"
+											data-signup-trigger="true" data-href="/signup/new"
+											data-context="bucket-shot" href="/boom">
+											Play
+										</a>
+
+
+									</li>
+
+									<li class="like-action-8809294">
+										<script>
+											if (typeof (Dribbble) != "undefined" && typeof (Dribbble.Shots) != "undefined") {
+												Dribbble.Shots.update(8809294, {
+													likes_count: 63,
+													liked: false
+												});
+											}
+										</script>
+
+										<a class="form-btn tipsy-mobile-disabled outlined stats-action like-shot"
+											title="Like this shot" data-signup-trigger="true" data-href="/signup/new"
+											data-context="like-shot" href="">
+											<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
+												viewBox="0 0 24 24" role="img" class="icon ">
+												<path
+													d="m18.199 2.04c-2.606-.284-4.262.961-6.199 3.008-2.045-2.047-3.593-3.292-6.199-3.008-3.544.388-6.321 4.43-5.718 7.96.966 5.659 5.944 9 11.917 12 5.973-3 10.951-6.341 11.917-12 .603-3.53-2.174-7.572-5.718-7.96z">
+												</path>
+											</svg>
+
+											Like
+										</a>
+									</li>
+
+								</ul>
+
+							</div>
+						</div>
+
+
+					</div>
+
+					<h2 class="attribution hover-card-parent">
+						<span class="attribution-user">
+							<a class="hoverable url" rel="contact" href="/janemsong"><img class="photo" alt="Jane Song"
+									src="https://cdn.dribbble.com/users/73551/avatars/mini/2227f8a0f2bad85fbd083b03653838c3.jpg?1452213905" />
+								Jane Song</a>
+							<a class="badge-link" href="/pro">
+								<span class="badge badge-pro">Pro</span>
+
+							</a>
+						</span>
+					</h2>
+				</li>
+				<li id="screenshot-7861763" data-screenshot-id="7861763" class="group  ">
+					<div class="dribbble video "
+						data-video-teaser-small="https://cdn.dribbble.com/users/73551/screenshots/7861763/catsite_v1.gif?vid=1"
+						data-video-teaser-large="https://cdn.dribbble.com/users/73551/screenshots/7861763/catsite_v1.gif?vid=1"
+						data-video-teaser-xlarge="https://cdn.dribbble.com/users/73551/screenshots/7861763/catsite_v1.gif?vid=1">
+
+						<div class="dribbble-shot with-actions">
+
+							<div class="dribbble-img video">
+								<a class="dribbble-link" href="/shots/7861763-Catsite">
+									<picture>
+										<source
+											srcset="https://cdn.dribbble.com/users/73551/screenshots/7861763/catsite_v1_still_2x.gif"
+											media="(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)">
+										<source
+											srcset="https://cdn.dribbble.com/users/73551/screenshots/7861763/catsite_v1_1x.gif">
+										<img alt="Catsite"
+											src="https://cdn.dribbble.com/users/73551/screenshots/7861763/catsite_v1_1x.gif" />
+									</picture>
+								</a>
+								<a class="dribbble-over" href="/shots/7861763-Catsite">
+									<strong>Catsite</strong>
+									<span class="timestamp"></span>
+									<span class="comment">
+										<span class="text-light">—</span>
+										Catsite is forced to spend his entire existence as a browser window
+									</span>
+								</a>
+							</div>
+
+
+							<div class="shot-display-options">
+								<ul class="tools group">
+									<li class="fav">
+										<span class="toggle-fav">104</span>
+									</li>
+									<li class="cmnt">
+										<span>
+											1
+										</span>
+									</li>
+									<li class="views">
+										<span>8,069</span>
+									</li>
+								</ul>
+
+								<div class="dribbble-shot-title-date">
+									<p class="shot-title">Catsite</p>
+									<p class="timestamp">October 28, 2019</p>
+								</div>
+
+								<div class="extras">
+									<a href="/shots/7861763-Catsite/rebounds">
+										<span class="rebound-mark has-rebounds">
+											0
+										</span>
+									</a> <a href="/janemsong">
+										<span class="rebound-mark is-rebound">
+											<img width="16" height="16" alt="Rebound"
+												src="https://cdn.dribbble.com/assets/icon-rebound-2x-24fe8b574874f064bcab2a8e46e0694cc39641ebef3d176c2eb742f5f0c7c308.png" />
+										</span>
+									</a> <span class="attachments-mark">
+										<img width="16" height="16" alt="Attachments"
+											src="https://cdn.dribbble.com/assets/icon-attach-16-2x-e9c3932a8f6aea66c54a2971b83349a8b6fac457fcaff1117cb13f74fe6766b4.png" />
+									</span>
+								</div>
+
+								<ul class="dribbble-shot-actions">
+									<li data-bucket-container="true">
+										<a class="bucket-shot form-btn outlined" title="Save shot"
+											data-signup-trigger="true" data-href="/signup/new"
+											data-context="bucket-shot" href="">
+											Save
+										</a>
+
+
+									</li>
+
+									<li class="like-action-7861763">
+										<script>
+											if (typeof (Dribbble) != "undefined" && typeof (Dribbble.Shots) != "undefined") {
+												Dribbble.Shots.update(7861763, {
+													likes_count: 104,
+													liked: false
+												});
+											}
+										</script>
+
+										<a class="form-btn tipsy-mobile-disabled outlined stats-action like-shot"
+											title="Like this shot" data-signup-trigger="true" data-href="/signup/new"
+											data-context="like-shot" href="">
+											<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
+												viewBox="0 0 24 24" role="img" class="icon ">
+												<path
+													d="m18.199 2.04c-2.606-.284-4.262.961-6.199 3.008-2.045-2.047-3.593-3.292-6.199-3.008-3.544.388-6.321 4.43-5.718 7.96.966 5.659 5.944 9 11.917 12 5.973-3 10.951-6.341 11.917-12 .603-3.53-2.174-7.572-5.718-7.96z">
+												</path>
+											</svg>
+
+											Like
+										</a>
+									</li>
+
+								</ul>
+
+							</div>
+						</div>
+
+						<div class="loading-indicator"></div>
+						<a class="animated-target" href="/shots/7861763-Catsite"></a>
+
+					</div>
+
+					<h2 class="attribution hover-card-parent">
+						<span class="attribution-user">
+							<a class="hoverable url" rel="contact" href="/janemsong"><img class="photo" alt="Jane Song"
+									src="https://cdn.dribbble.com/users/73551/avatars/mini/2227f8a0f2bad85fbd083b03653838c3.jpg?1452213905" />
+								Jane Song</a>
+							<a class="badge-link" href="/pro">
+								<span class="badge badge-pro">Pro</span>
+
+							</a>
+						</span>
+					</h2>
+				</li>
+
+				<script>
+					var newestShots = [{
+						id: 8809294,
+						title: "Make yr own magic",
+						path: "/shots/8809294-Make-yr-own-magic",
+						published_at: 'December 04, 2019',
+						is_rebound: false,
+						rebounds_count: 0,
+						attachments_count: 0,
+						view_count: 4901,
+						comments_count: 1,
+						likes_count: 63,
+						liked: false,
+						ga: []
+					}, {
+						id: 7861763,
+						title: "Catsite",
+						path: "/shots/7861763-Catsite",
+						published_at: 'October 28, 2019',
+						is_rebound: false,
+						rebounds_count: 0,
+						attachments_count: 0,
+						view_count: 8069,
+						comments_count: 1,
+						likes_count: 104,
+						liked: false,
+						ga: []
+					}, {
+						id: 7751855,
+						title: "SQUIRREL",
+						path: "/shots/7751855-SQUIRREL",
+						published_at: 'October 22, 2019',
+						is_rebound: false,
+						rebounds_count: 0,
+						attachments_count: 0,
+						view_count: 8075,
+						comments_count: 3,
+						likes_count: 92,
+						liked: false,
+						ga: []
+					}, {
+						id: 6756151,
+						title: "Mailchimp: Building customer relationships through social media",
+						path: "/shots/6756151-Mailchimp-Building-customer-relationships-through-social-media",
+						published_at: 'July 09, 2019',
+						is_rebound: false,
+						rebounds_count: 0,
+						attachments_count: 0,
+						view_count: 48633,
+						comments_count: 10,
+						likes_count: 400,
+						liked: false,
+						ga: []
+					}, {
+						id: 5256251,
+						title: "Sawyer in Maine",
+						path: "/shots/5256251-Sawyer-in-Maine",
+						published_at: 'September 14, 2018',
+						is_rebound: false,
+						rebounds_count: 0,
+						attachments_count: 0,
+						view_count: 6428,
+						comments_count: 2,
+						likes_count: 64,
+						liked: false,
+						ga: []
+					}, {
+						id: 4935257,
+						title: "Getting the most out of your MailChimp reports",
+						path: "/shots/4935257-Getting-the-most-out-of-your-MailChimp-reports",
+						published_at: 'August 09, 2018',
+						is_rebound: false,
+						rebounds_count: 1,
+						attachments_count: 0,
+						view_count: 25988,
+						comments_count: 14,
+						likes_count: 540,
+						liked: false,
+						ga: []
+					}, {
+						id: 4667635,
+						title: "Ticket 5",
+						path: "/shots/4667635-Ticket-5",
+						published_at: 'June 04, 2018',
+						is_rebound: false,
+						rebounds_count: 0,
+						attachments_count: 0,
+						view_count: 8324,
+						comments_count: 2,
+						likes_count: 182,
+						liked: false,
+						ga: []
+					}, {
+						id: 4585746,
+						title: "Sawyer",
+						path: "/shots/4585746-Sawyer",
+						published_at: 'May 13, 2018',
+						is_rebound: false,
+						rebounds_count: 0,
+						attachments_count: 0,
+						view_count: 5960,
+						comments_count: 1,
+						likes_count: 81,
+						liked: false,
+						ga: []
+					}, {
+						id: 4548399,
+						title: "Happy Small Business Week!",
+						path: "/shots/4548399-Happy-Small-Business-Week",
+						published_at: 'May 03, 2018',
+						is_rebound: false,
+						rebounds_count: 0,
+						attachments_count: 0,
+						view_count: 16367,
+						comments_count: 5,
+						likes_count: 436,
+						liked: false,
+						ga: []
+					}, {
+						id: 4461528,
+						title: "Those giant phones",
+						path: "/shots/4461528-Those-giant-phones",
+						published_at: 'April 11, 2018',
+						is_rebound: false,
+						rebounds_count: 0,
+						attachments_count: 0,
+						view_count: 5954,
+						comments_count: 1,
+						likes_count: 97,
+						liked: false,
+						ga: []
+					}, {
+						id: 4195139,
+						title: "A/B Testing",
+						path: "/shots/4195139-A-B-Testing",
+						published_at: 'February 06, 2018',
+						is_rebound: false,
+						rebounds_count: 0,
+						attachments_count: 0,
+						view_count: 13691,
+						comments_count: 9,
+						likes_count: 225,
+						liked: false,
+						ga: []
+					}, {
+						id: 3980089,
+						title: "Small Business Saturday",
+						path: "/shots/3980089-Small-Business-Saturday",
+						published_at: 'November 28, 2017',
+						is_rebound: false,
+						rebounds_count: 0,
+						attachments_count: 0,
+						view_count: 19310,
+						comments_count: 10,
+						likes_count: 527,
+						liked: false,
+						ga: []
+					}, {
+						id: 3465079,
+						title: "E-commerce tips",
+						path: "/shots/3465079-E-commerce-tips",
+						published_at: 'April 28, 2017',
+						is_rebound: false,
+						rebounds_count: 0,
+						attachments_count: 0,
+						view_count: 17026,
+						comments_count: 2,
+						likes_count: 343,
+						liked: false,
+						ga: []
+					}, {
+						id: 3410923,
+						title: "Ticket 4",
+						path: "/shots/3410923-Ticket-4",
+						published_at: 'April 04, 2017',
+						is_rebound: false,
+						rebounds_count: 0,
+						attachments_count: 0,
+						view_count: 7266,
+						comments_count: 1,
+						likes_count: 245,
+						liked: false,
+						ga: []
+					}, {
+						id: 3391941,
+						title: "Illos",
+						path: "/shots/3391941-Illos",
+						published_at: 'March 27, 2017',
+						is_rebound: false,
+						rebounds_count: 0,
+						attachments_count: 0,
+						view_count: 5775,
+						comments_count: 5,
+						likes_count: 200,
+						liked: false,
+						ga: []
+					}, {
+						id: 3387001,
+						title: "Fair Street Studios",
+						path: "/shots/3387001-Fair-Street-Studios",
+						published_at: 'March 24, 2017',
+						is_rebound: false,
+						rebounds_count: 0,
+						attachments_count: 0,
+						view_count: 4289,
+						comments_count: 1,
+						likes_count: 66,
+						liked: false,
+						ga: []
+					}, {
+						id: 3330141,
+						title: "Fire Safety",
+						path: "/shots/3330141-Fire-Safety",
+						published_at: 'March 01, 2017',
+						is_rebound: false,
+						rebounds_count: 0,
+						attachments_count: 0,
+						view_count: 6135,
+						comments_count: 6,
+						likes_count: 127,
+						liked: false,
+						ga: []
+					}, {
+						id: 3315080,
+						title: "Ticket 3",
+						path: "/shots/3315080-Ticket-3",
+						published_at: 'February 23, 2017',
+						is_rebound: true,
+						rebounds_count: 0,
+						attachments_count: 0,
+						view_count: 5054,
+						comments_count: 2,
+						likes_count: 149,
+						liked: false,
+						ga: []
+					}, {
+						id: 3260742,
+						title: "Ticket 2",
+						path: "/shots/3260742-Ticket-2",
+						published_at: 'February 02, 2017',
+						is_rebound: true,
+						rebounds_count: 1,
+						attachments_count: 0,
+						view_count: 4155,
+						comments_count: 5,
+						likes_count: 119,
+						liked: false,
+						ga: []
+					}, {
+						id: 3258453,
+						title: "Ticket",
+						path: "/shots/3258453-Ticket",
+						published_at: 'February 01, 2017',
+						is_rebound: false,
+						rebounds_count: 1,
+						attachments_count: 0,
+						view_count: 4331,
+						comments_count: 3,
+						likes_count: 134,
+						liked: false,
+						ga: []
+					}, {
+						id: 3252736,
+						title: "Atlanta Ave Swim Club",
+						path: "/shots/3252736-Atlanta-Ave-Swim-Club",
+						published_at: 'January 30, 2017',
+						is_rebound: false,
+						rebounds_count: 0,
+						attachments_count: 0,
+						view_count: 5347,
+						comments_count: 1,
+						likes_count: 174,
+						liked: false,
+						ga: []
+					}, {
+						id: 3168270,
+						title: "Making Marks",
+						path: "/shots/3168270-Making-Marks",
+						published_at: 'December 20, 2016',
+						is_rebound: false,
+						rebounds_count: 0,
+						attachments_count: 0,
+						view_count: 3860,
+						comments_count: 1,
+						likes_count: 78,
+						liked: false,
+						ga: []
+					}, {
+						id: 2962588,
+						title: "Magic (Chimp) Eye",
+						path: "/shots/2962588-Magic-Chimp-Eye",
+						published_at: 'September 14, 2016',
+						is_rebound: false,
+						rebounds_count: 0,
+						attachments_count: 1,
+						view_count: 6820,
+						comments_count: 7,
+						likes_count: 151,
+						liked: false,
+						ga: []
+					}, {
+						id: 2960970,
+						title: "Cassette insert",
+						path: "/shots/2960970-Cassette-insert",
+						published_at: 'September 13, 2016',
+						is_rebound: true,
+						rebounds_count: 0,
+						attachments_count: 1,
+						view_count: 3989,
+						comments_count: 2,
+						likes_count: 90,
+						liked: false,
+						ga: []
+					}];
+
+					if (typeof (Dribbble) != "undefined" && typeof (Dribbble.Shots) != "undefined") {
+						Dribbble.Shots.add(newestShots);
+						Dribbble.TeaserStats.init(newestShots);
+
+						Dribbble.Screenshots.cursor = '1473813268.321768';
+					} else {
+						if (typeof newShots === "undefined") {
+							var newShots = [];
+						}
+						newShots = newShots.concat(newestShots);
+					}
+				</script>
+
+
+			</ol>
+
+			<div class="page">
+				<div class="pagination"><span class="previous_page disabled">&larr; Prev</span> <a class="next_page"
+						rel="next" href="/janemsong?page=2">Next &rarr;</a></div>
+			</div>
+
+
+			<div class="infinite shot-grid-width">
+				<a href="#" class="form-btn load-more">Load more…</a>
+			</div>
+
+			<div class="loading-more">
+				<span class="processing">Loading more…</span>
+			</div>
+
+			<div class="back-to-top" style="display: none">
+				<a href="#"><img title="Back to Top"
+						src="https://cdn.dribbble.com/assets/icon-backtotop-1b04df73090f6b0f3192a3b71874ca3b3cc19dff16adc6cf365cd0c75897f6c0.png"
+						alt="Icon backtotop" /></a>
+			</div>
+
+
+
+
+
+
+
+
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+
+	</div>
+	</div>
+	</div> -->
+
+	<hr />
+
+	<div id="footer" role="contentinfo">
+		<div id="footer-inner">
+			<div class="group">
+				<div class="footer-mod">
+					<p class="logo"><a href="/"><img width="80" alt="dribbble"
+								src="https://cdn.dribbble.com/assets/logo-footer-hd-a05db77841b4b27c0bf23ec1378e97c988190dfe7d26e32e1faea7269f9e001b.png" /></a><br />Show
+						and tell for designers</p>
+
+					<p class="about">What are you working on? Dribbble is a community of designers sharing screenshots
+						of their work, process, and projects.</p>
+
+					<p class="follow">
+						<a href="/dribbble"><img width="24"
+								src="https://cdn.dribbble.com/assets/icon-team-dribbble-8706862cdb0afa7f43f9e0218b073515f0a2bef19780961d324ae4620ebe249b.png"
+								alt="Icon team dribbble" /></a>
+						<a href="http://twitter.com/dribbble"><img width="24"
+								src="https://cdn.dribbble.com/assets/icon-team-twitter-1fa6921d96b16e47f00ad0381ebbab59ba089c22b21f9bce783c9a4a077f40e9.png"
+								alt="Icon team twitter" /></a>
+						<a href="http://facebook.com/dribbble"><img width="24"
+								src="https://cdn.dribbble.com/assets/icon-team-facebook-4d63851997b88eb903858057327d93df9f950a55c5104a3a19206f2005682ea3.png"
+								alt="Icon team facebook" /></a>
+						<a href="http://instagram.com/dribbble"><img width="24"
+								src="https://cdn.dribbble.com/assets/icon-team-instagram-5dfdcd1478ea4a1c1e109b32adbd3878062aa1eb571da63ac379e0da1d2d5762.png"
+								alt="Icon team instagram" /></a>
+						<a href="/stories">
+							<img width="24"
+								src="https://cdn.dribbble.com/assets/icon-team-blog-2705adcb7ee6522051e175d10683208f0fa0ad17daa15fdf3f36aca99c540312.png"
+								alt="Icon team blog" />
+						</a> </p>
+				</div>
+				<div class="footer-mod">
+					<div class="extra-links">
+						<h3><a href="/">Dribbble</a></h3>
+						<ul>
+							<li><a id="f-home" href="/about">About</a></li>
+							<li><a href="https://help.dribbble.com">Help</a></li>
+							<li><a href="/contact">Contact</a></li>
+							<li><a href="/careers">Careers</a></li>
+							<li><a href="/terms">Terms</a></li>
+							<li><a href="/guidelines">Guidelines</a></li>
+							<li><a href="/privacy">Privacy</a></li>
+							<li><a href="/shots?list=playoffs">Playoffs</a></li>
+							<li><a href="https://shop.dribbble.com/">Shop</a></li>
+							<li><a href="/testimonials">Testimonials</a></li>
+							<li><a href="/branding">Media Kit</a></li>
+							<li><a href="/advertise">Advertise</a></li>
+							<li><a href="http://developer.dribbble.com">API</a></li>
+							<li><a href="/apps">Apps</a></li>
+							<li><a href="/places">Places</a></li>
+						</ul>
+					</div>
+					<div class="additional-links">
+						<h3><a href="/hiring">Hiring at Dribbble</a></h3>
+						<ul>
+							<li><a href="/jobs/new">Post a job</a></li>
+							<li><a href="/designers">Search designers</a></li>
+							<li><a href="/pro">Add your team</a></li>
+						</ul>
+						<h3>Directories</h3>
+						<ul>
+							<li><a href="/directories/jobs">Jobs</a></li>
+							<li><a href="/tags">Tags</a></li>
+						</ul>
+					</div>
+
+					<div class="job-links">
+						<h3><a href="/jobs">Jobs for Designers</a></h3>
+						<ol class="jobs-list">
+
+							<li class="group">
+								<a class="item-team" rel="tipsy" title="Visit the team’s profile"
+									href="/bleacherreport">
+									<img src="https://cdn.dribbble.com/users/1693570/avatars/normal/2e6a1a698f44c9635ea8324921b786fa.jpg?1492535508"
+										alt="2e6a1a698f44c9635ea8324921b786fa" />
+								</a>
+
+								<a class="job-edit" rel="tipsy" title="Edit this job" data-creator-id="368550"
+									href="/jobs/19110/edit">
+									<img src="https://cdn.dribbble.com/assets/icon-edit-button-8d0f2493aa649d9e18d5cf27ee32c93aaa6488ddda85b481f6ca341b85fde845.png"
+										alt="Icon edit button" />
+								</a>
+								<a class="item-link group" rel="nofollow"
+									href="/jobs/19110-Senior-Product-Designer?source=footer">
+									<span class="item-info">
+										<span class="item-title">Bleacher Report</span>
+										<span class="item-desc">Senior Product Designer</span>
+									</span>
+
+									<span class="item-meta">San Francisco, CA</span>
+								</a></li>
+
+							<li class="group">
+								<a class="item-team" rel="tipsy" title="Visit the team’s profile" href="/samsara">
+									<img src="https://cdn.dribbble.com/users/2054772/avatars/normal/ab3e8fb5576ecf0fb0a31cf6ff1d30e2.png?1539115565"
+										alt="Ab3e8fb5576ecf0fb0a31cf6ff1d30e2" />
+								</a>
+
+								<a class="job-edit" rel="tipsy" title="Edit this job" data-creator-id="2054772"
+									href="/jobs/22481/edit">
+									<img src="https://cdn.dribbble.com/assets/icon-edit-button-8d0f2493aa649d9e18d5cf27ee32c93aaa6488ddda85b481f6ca341b85fde845.png"
+										alt="Icon edit button" />
+								</a>
+								<a class="item-link group" rel="nofollow"
+									href="/jobs/22481-Designer-Brand-Team?source=footer">
+									<span class="item-info">
+										<span class="item-title">Samsara</span>
+										<span class="item-desc">Designer – Brand Team</span>
+									</span>
+
+									<span class="item-meta">San Francisco, CA</span>
+								</a></li>
+
+							<li class="group">
+								<a class="item-team" rel="tipsy" title="Visit the team’s profile" href="/plaid">
+									<img src="https://cdn.dribbble.com/users/1133019/avatars/normal/8d6e2c895191309d527adc37692cc683.jpg?1540844907"
+										alt="8d6e2c895191309d527adc37692cc683" />
+								</a>
+
+								<a class="job-edit" rel="tipsy" title="Edit this job" data-creator-id="1603772"
+									href="/jobs/16538/edit">
+									<img src="https://cdn.dribbble.com/assets/icon-edit-button-8d0f2493aa649d9e18d5cf27ee32c93aaa6488ddda85b481f6ca341b85fde845.png"
+										alt="Icon edit button" />
+								</a>
+								<a class="item-link group" rel="nofollow"
+									href="/jobs/16538-Designer-Plaid-com?source=footer">
+									<span class="item-info">
+										<span class="item-title">Plaid</span>
+										<span class="item-desc">Designer - Plaid.com</span>
+									</span>
+
+									<span class="item-meta">San Francisco</span>
+								</a></li>
+
+						</ol>
+
+					</div>
+
+				</div>
+
+				<div class="footer-mod">
+					<div class="ad carbon target notloaded">
+					</div>
+
+					<h4 id="shots-total" class="group">
+						<strong>9,395,664</strong> games created
+					</h4>
+
+				</div>
+			</div>
+
+			<div class="group">
+				<div class="footer-mod">
+					<p class="network">
+						&copy; 2020 Dribbble. All rights reserved.
+					</p>
+				</div>
+
+				<div class="footer-mod">
+					<h5 class="remote-love">
+						Made with &hearts; remotely from
+						<div class="remote-locations">
+							<span>Salem, MA</span>
+							<span>Walnut Creek, CA</span>
+							<span>Victoria, BC</span>
+							<span>Centennial, CO</span>
+							<span>Bournemouth, UK</span>
+							<span>Vancouver, BC</span>
+							<span>Montreal, QC</span>
+							<span>Roseville, MN</span>
+							<span>Rome, GA</span>
+							<span>Peterborough, NH</span>
+							<span>Oakland, CA</span>
+							<span>Austin, TX</span>
+							<span>Mystic, CT</span>
+							<span>Saint Charles, MO</span>
+							<span>Des Moines, IA</span>
+							<span>Salt Lake City, UT</span>
+							<span>Lander, WY</span>
+							<span>Cote St Luc, QC</span>
+							<span>Womelsdorf, PA</span>
+							<span>Minneapolis, MN</span>
+							<span>Highlands Ranch, CO</span>
+							<span>San Francisco, CA</span>
+							<span>Silver Spring, MD</span>
+							<span>London, ON</span>
+							<span>Pottstown, PA</span>
+							<span>Phoenix, AZ</span>
+							<span>Sacramento, CA</span>
+							<span>Farmers Branch, TX</span>
+							<span>Marina del Rey, CA</span>
+							<span>Murray, UT</span>
+							<span>Orlando, FL</span>
+							<span>Paris, France</span>
+							<span>Brookline, MA</span>
+							<span>Los Angeles, CA</span>
+							<span>San Rafael, CA</span>
+							<span>San Luis Obispo, CA</span>
+							<span>Atlanta, GA</span>
+							<span>Tucson, AZ</span>
+						</div>
+
+					</h5>
+				</div>
+			</div>
+		</div>
+	</div> <!-- /footer -->
+
+
+
+
+
+
+	<div class="shot-overlay" tabindex="-1">
+		<a href="#" class="close-overlay" aria-label="close">
+			<img src="https://cdn.dribbble.com/assets/icon-shot-x-light-40c073cd65443c99d4ac129b69bf578c8cf97d69b78990c00c4f8c5873b0d601.png"
+				alt="Icon shot x light" />
+		</a>
+
+		<ul class="shot-nav">
+			<li class="shot-nav-prev">
+				<a href="#">
+					<img src="https://cdn.dribbble.com/assets/icon-shot-prev-light-ca583c76838d54eca11832ebbcaba09ba8b2bf347de2335341d244ecb9734593.png"
+						alt="Icon shot prev light" />
+				</a>
+			</li>
+			<li class="shot-nav-next">
+				<a href="#">
+					<img src="https://cdn.dribbble.com/assets/icon-shot-next-light-871a18220c4c5a0325d1353f8e4cc204c3b49beacc63500644556faf25ded617.png"
+						alt="Icon shot next light" />
+				</a>
+			</li>
+		</ul>
+
+		<div class="overlay-content group"></div>
+	</div>
+	<div class="attachment-overlay" style="display:none;" tabindex="-1"></div>
+
+	<div id="signup-overlay" class="overlay ">
+		<div class="lightbox">
+			<a href="#" class="close" aria-label="close">
+				<img alt="close"
+					src="https://cdn.dribbble.com/assets/icon-overlay-x-2x-b7df2526b4c26d4e8410a7c437c433908be0c7c8c3c3402c3e578af5c50cf5a5.png" />
+			</a>
+			<div class="display">
+				<div class="processing">Loading…</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- jquery failover -->
+	<script>
+		if (typeof jQuery == 'undefined') {
+			document.write(unescape(
+				'%3Cscript src="https://cdn.dribbble.com/assets/jquery-3.2.1.min-620f9d5d78f3d840706c60a049ee6fa359237cef4203800c0403d94c203992f0.js">%3C/script>'
+				))
+		}
+	</script>
+
+
+
+	<script
+		src="https://cdn.dribbble.com/assets/global-c2048108792334381a057a82eb791bdf700e39bc6a540c5449b99ccde52b2c4b.js">
+	</script>
+	<script>
+		Dribbble.JsConfig = {
+			user: {
+				"isLoggedIn": false
+			},
+		}
+	</script>
+
+	<script src="https://cdn.dribbble.com/assets/packs/js/application-a74ef84cf2844f6b37e9.js"></script>
+
+	<script>
+	</script>
+
+	<script>
+		$('.bucket-shot').off().on('click', function (event) {
+			$target = $(event.target);
+			Dribbble.Segment.track("shot_save_clicked", {
+				shot_id: $target.attr("data-screenshot-id"),
+				shot_user_id: $target.attr("data-screenshot-user-id"),
+				on_hover: $target.parent().parent().hasClass('dribbble-shot-actions'),
+			});
+		});
+	</script>
+
+	<script>
+	</script>
+
+	<script>
+		$('.bucket-shot').off().on('click', function (event) {
+			$target = $(event.target);
+			Dribbble.Segment.track("shot_save_clicked", {
+				shot_id: $target.attr("data-screenshot-id"),
+				shot_user_id: $target.attr("data-screenshot-user-id"),
+				on_hover: $target.parent().parent().hasClass('dribbble-shot-actions'),
+			});
+		});
+	</script>
+
+	<script>
+	</script>
+
+	<script>
+		$('.bucket-shot').off().on('click', function (event) {
+			$target = $(event.target);
+			Dribbble.Segment.track("shot_save_clicked", {
+				shot_id: $target.attr("data-screenshot-id"),
+				shot_user_id: $target.attr("data-screenshot-user-id"),
+				on_hover: $target.parent().parent().hasClass('dribbble-shot-actions'),
+			});
+		});
+	</script>
+
+	<script>
+	</script>
+
+	<script>
+		$('.bucket-shot').off().on('click', function (event) {
+			$target = $(event.target);
+			Dribbble.Segment.track("shot_save_clicked", {
+				shot_id: $target.attr("data-screenshot-id"),
+				shot_user_id: $target.attr("data-screenshot-user-id"),
+				on_hover: $target.parent().parent().hasClass('dribbble-shot-actions'),
+			});
+		});
+	</script>
+
+	<script>
+	</script>
+
+	<script>
+		$('.bucket-shot').off().on('click', function (event) {
+			$target = $(event.target);
+			Dribbble.Segment.track("shot_save_clicked", {
+				shot_id: $target.attr("data-screenshot-id"),
+				shot_user_id: $target.attr("data-screenshot-user-id"),
+				on_hover: $target.parent().parent().hasClass('dribbble-shot-actions'),
+			});
+		});
+	</script>
+
+	<script>
+	</script>
+
+	<script>
+		$('.bucket-shot').off().on('click', function (event) {
+			$target = $(event.target);
+			Dribbble.Segment.track("shot_save_clicked", {
+				shot_id: $target.attr("data-screenshot-id"),
+				shot_user_id: $target.attr("data-screenshot-user-id"),
+				on_hover: $target.parent().parent().hasClass('dribbble-shot-actions'),
+			});
+		});
+	</script>
+
+	<script>
+	</script>
+
+	<script>
+		$('.bucket-shot').off().on('click', function (event) {
+			$target = $(event.target);
+			Dribbble.Segment.track("shot_save_clicked", {
+				shot_id: $target.attr("data-screenshot-id"),
+				shot_user_id: $target.attr("data-screenshot-user-id"),
+				on_hover: $target.parent().parent().hasClass('dribbble-shot-actions'),
+			});
+		});
+	</script>
+
+	<script>
+	</script>
+
+	<script>
+		$('.bucket-shot').off().on('click', function (event) {
+			$target = $(event.target);
+			Dribbble.Segment.track("shot_save_clicked", {
+				shot_id: $target.attr("data-screenshot-id"),
+				shot_user_id: $target.attr("data-screenshot-user-id"),
+				on_hover: $target.parent().parent().hasClass('dribbble-shot-actions'),
+			});
+		});
+	</script>
+
+	<script>
+	</script>
+
+	<script>
+		$('.bucket-shot').off().on('click', function (event) {
+			$target = $(event.target);
+			Dribbble.Segment.track("shot_save_clicked", {
+				shot_id: $target.attr("data-screenshot-id"),
+				shot_user_id: $target.attr("data-screenshot-user-id"),
+				on_hover: $target.parent().parent().hasClass('dribbble-shot-actions'),
+			});
+		});
+	</script>
+
+	<script>
+	</script>
+
+	<script>
+		$('.bucket-shot').off().on('click', function (event) {
+			$target = $(event.target);
+			Dribbble.Segment.track("shot_save_clicked", {
+				shot_id: $target.attr("data-screenshot-id"),
+				shot_user_id: $target.attr("data-screenshot-user-id"),
+				on_hover: $target.parent().parent().hasClass('dribbble-shot-actions'),
+			});
+		});
+	</script>
+
+	<script>
+	</script>
+
+	<script>
+		$('.bucket-shot').off().on('click', function (event) {
+			$target = $(event.target);
+			Dribbble.Segment.track("shot_save_clicked", {
+				shot_id: $target.attr("data-screenshot-id"),
+				shot_user_id: $target.attr("data-screenshot-user-id"),
+				on_hover: $target.parent().parent().hasClass('dribbble-shot-actions'),
+			});
+		});
+	</script>
+
+	<script>
+	</script>
+
+	<script>
+		$('.bucket-shot').off().on('click', function (event) {
+			$target = $(event.target);
+			Dribbble.Segment.track("shot_save_clicked", {
+				shot_id: $target.attr("data-screenshot-id"),
+				shot_user_id: $target.attr("data-screenshot-user-id"),
+				on_hover: $target.parent().parent().hasClass('dribbble-shot-actions'),
+			});
+		});
+	</script>
+
+	<script>
+	</script>
+
+	<script>
+		$('.bucket-shot').off().on('click', function (event) {
+			$target = $(event.target);
+			Dribbble.Segment.track("shot_save_clicked", {
+				shot_id: $target.attr("data-screenshot-id"),
+				shot_user_id: $target.attr("data-screenshot-user-id"),
+				on_hover: $target.parent().parent().hasClass('dribbble-shot-actions'),
+			});
+		});
+	</script>
+
+	<script>
+	</script>
+
+	<script>
+		$('.bucket-shot').off().on('click', function (event) {
+			$target = $(event.target);
+			Dribbble.Segment.track("shot_save_clicked", {
+				shot_id: $target.attr("data-screenshot-id"),
+				shot_user_id: $target.attr("data-screenshot-user-id"),
+				on_hover: $target.parent().parent().hasClass('dribbble-shot-actions'),
+			});
+		});
+	</script>
+
+	<script>
+	</script>
+
+	<script>
+		$('.bucket-shot').off().on('click', function (event) {
+			$target = $(event.target);
+			Dribbble.Segment.track("shot_save_clicked", {
+				shot_id: $target.attr("data-screenshot-id"),
+				shot_user_id: $target.attr("data-screenshot-user-id"),
+				on_hover: $target.parent().parent().hasClass('dribbble-shot-actions'),
+			});
+		});
+	</script>
+
+	<script>
+	</script>
+
+	<script>
+		$('.bucket-shot').off().on('click', function (event) {
+			$target = $(event.target);
+			Dribbble.Segment.track("shot_save_clicked", {
+				shot_id: $target.attr("data-screenshot-id"),
+				shot_user_id: $target.attr("data-screenshot-user-id"),
+				on_hover: $target.parent().parent().hasClass('dribbble-shot-actions'),
+			});
+		});
+	</script>
+
+	<script>
+	</script>
+
+	<script>
+		$('.bucket-shot').off().on('click', function (event) {
+			$target = $(event.target);
+			Dribbble.Segment.track("shot_save_clicked", {
+				shot_id: $target.attr("data-screenshot-id"),
+				shot_user_id: $target.attr("data-screenshot-user-id"),
+				on_hover: $target.parent().parent().hasClass('dribbble-shot-actions'),
+			});
+		});
+	</script>
+
+	<script>
+	</script>
+
+	<script>
+		$('.bucket-shot').off().on('click', function (event) {
+			$target = $(event.target);
+			Dribbble.Segment.track("shot_save_clicked", {
+				shot_id: $target.attr("data-screenshot-id"),
+				shot_user_id: $target.attr("data-screenshot-user-id"),
+				on_hover: $target.parent().parent().hasClass('dribbble-shot-actions'),
+			});
+		});
+	</script>
+
+	<script>
+	</script>
+
+	<script>
+		$('.bucket-shot').off().on('click', function (event) {
+			$target = $(event.target);
+			Dribbble.Segment.track("shot_save_clicked", {
+				shot_id: $target.attr("data-screenshot-id"),
+				shot_user_id: $target.attr("data-screenshot-user-id"),
+				on_hover: $target.parent().parent().hasClass('dribbble-shot-actions'),
+			});
+		});
+	</script>
+
+	<script>
+	</script>
+
+	<script>
+		$('.bucket-shot').off().on('click', function (event) {
+			$target = $(event.target);
+			Dribbble.Segment.track("shot_save_clicked", {
+				shot_id: $target.attr("data-screenshot-id"),
+				shot_user_id: $target.attr("data-screenshot-user-id"),
+				on_hover: $target.parent().parent().hasClass('dribbble-shot-actions'),
+			});
+		});
+	</script>
+
+	<script>
+	</script>
+
+	<script>
+		$('.bucket-shot').off().on('click', function (event) {
+			$target = $(event.target);
+			Dribbble.Segment.track("shot_save_clicked", {
+				shot_id: $target.attr("data-screenshot-id"),
+				shot_user_id: $target.attr("data-screenshot-user-id"),
+				on_hover: $target.parent().parent().hasClass('dribbble-shot-actions'),
+			});
+		});
+	</script>
+
+	<script>
+	</script>
+
+	<script>
+		$('.bucket-shot').off().on('click', function (event) {
+			$target = $(event.target);
+			Dribbble.Segment.track("shot_save_clicked", {
+				shot_id: $target.attr("data-screenshot-id"),
+				shot_user_id: $target.attr("data-screenshot-user-id"),
+				on_hover: $target.parent().parent().hasClass('dribbble-shot-actions'),
+			});
+		});
+	</script>
+
+	<script>
+	</script>
+
+	<script>
+		$('.bucket-shot').off().on('click', function (event) {
+			$target = $(event.target);
+			Dribbble.Segment.track("shot_save_clicked", {
+				shot_id: $target.attr("data-screenshot-id"),
+				shot_user_id: $target.attr("data-screenshot-user-id"),
+				on_hover: $target.parent().parent().hasClass('dribbble-shot-actions'),
+			});
+		});
+	</script>
+
+	<script>
+	</script>
+
+	<script>
+		$('.bucket-shot').off().on('click', function (event) {
+			$target = $(event.target);
+			Dribbble.Segment.track("shot_save_clicked", {
+				shot_id: $target.attr("data-screenshot-id"),
+				shot_user_id: $target.attr("data-screenshot-user-id"),
+				on_hover: $target.parent().parent().hasClass('dribbble-shot-actions'),
+			});
+		});
+	</script>
+	<script
+		src="https://cdn.dribbble.com/assets/shots-manifest-f0f80fcfc9a20008df9925188108c0e138e9c5b7914fa7676e53a422eaa94eaf.js">
+	</script>
+	<script
+		src="https://cdn.dribbble.com/assets/follow-bar-a0d29eb6ca41a843ccd3cbbfdba8026134116aee2a5d3aebaf671adfc05ecee1.js">
+	</script>
+	<script>
+		$(function () {
+
+			Dribbble.Screenshots.initialize({
+				"enable_overlay": true,
+				"cursor": false,
+				"deferredContent": null,
+				"showFollowSuggestions": null,
+				"showAds": null,
+				"staticParams": null
 			});
 
-			function displayFailureNotice(err) {
-				var msg = err.message || err;
-				console.error(msg);
-				setStatusNotice(msg);
-				setStatusMode('notice');
-				initializing = false;
-			};
 
-			if (!Engine.isWebGLAvailable()) {
-				displayFailureNotice('WebGL not available');
-			} else {
-				setStatusMode('indeterminate');
-				engine.setCanvas(canvas);
-				engine.startGame(EXECUTABLE_NAME, MAIN_PACK).then(() => {
-					setStatusMode('hidden');
-					initializing = false;
-				}, displayFailureNotice);
+			if (Dribbble.Bucket) {
+				new Dribbble.Bucket({
+					target: "a[data-bucket-add]"
+				});
 			}
-		})();
-	//]]></script>
-</body>
-</html>
 
+
+			$(document).on(
+				'click',
+				'a[data-fav-toggle=shot]',
+				Screenshot.Like.Shot.toggle
+			)
+		});
+	</script>
+	<script>
+		Dribbble.Segment.track("profile_viewed", {
+			viewed_user_id: 73551,
+			viewed_user_type: "player"
+		})
+	</script>
+	<script>
+		$("form.select-sort-form select").on('change', function () {
+			var url = window.location.pathname + '?stream=' + $(this).val();
+			if (Dribbble.Screenshots) {
+				Dribbble.Screenshots.refreshList(url)
+			} else {
+				window.location = url
+			}
+		})
+	</script>
+	<script>
+		setTimeout(function () {
+			Dribbble.Ads.enable();
+			Dribbble.Ads.load("footer");
+		}, 1);
+	</script>
+
+	<script>
+		(function (i, s, o, g, r, a, m) {
+			i["GoogleAnalyticsObject"] = r;
+			i[r] = i[r] || function () {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o),
+				m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, "script", "//www.google-analytics.com/analytics.js", "ga");
+
+		ga("create", "UA-24041469-1", "auto", {
+			"sampleRate": 10.0
+		});
+	</script>
+
+	<script>
+		window.analytics.load("NebmEAHRg0JSoZUQ3dvYl38FE7sSSTQi");
+	</script>
+
+	<script>
+		if (Dribbble.SignupModal) {
+			Dribbble.SignupModal.variant = "email-link"
+		}
+		var segmentPageProperties = {
+			controller: "users",
+			action: "show"
+		}
+		if (window.location.pathname == "/") {
+			Dribbble.Analytics.namedRoot = "/shots";
+			Dribbble.Analytics.logDribbbleGAPageView("/")
+			segmentPageProperties.url = Dribbble.Analytics.namedRoot
+		} else {
+			Dribbble.Analytics.logDribbbleGAPageView("/janemsong")
+		}
+		Dribbble.Segment.page(segmentPageProperties)
+	</script>
+
+
+	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-787470371"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'AW-787470371');
+	</script>
+
+
+
+</body>
+
+</html>
